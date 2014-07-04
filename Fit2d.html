@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Compare With Fit2d &mdash; SAXS 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="SAXS 0.2.1 documentation" href="index.html" />
+    <link rel="up" title="The Technology" href="TheTechnology.html" />
+    <link rel="next" title="Integrating a Constant Image With Masked Values" href="ConstantImage.html" />
+    <link rel="prev" title="Polarization Correction" href="PolCorr.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ConstantImage.html" title="Integrating a Constant Image With Masked Values"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="PolCorr.html" title="Polarization Correction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li>
+          <li><a href="TheTechnology.html" accesskey="U">The Technology</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="compare-with-fit2d">
+<h1>Compare With Fit2d<a class="headerlink" href="#compare-with-fit2d" title="Permalink to this headline">¶</a></h1>
+<p>The program fit2d, which this package aims to partly replace, is the standard, so we better include a comparison plot here:</p>
+<p>(<a class="reference external" href=".//Fit2d-1.py">Source code</a>, <a class="reference external" href=".//Fit2d-1.png">png</a>, <a class="reference external" href=".//Fit2d-1.hires.png">hires.png</a>, <a class="reference external" href=".//Fit2d-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/Fit2d-1.png" src="_images/Fit2d-1.png" />
+</div>
+<p>Okay, this doesn&#8217;t show much but if we plot the difference:</p>
+<p>(<a class="reference external" href=".//Fit2d-2.py">Source code</a>, <a class="reference external" href=".//Fit2d-2.png">png</a>, <a class="reference external" href=".//Fit2d-2.hires.png">hires.png</a>, <a class="reference external" href=".//Fit2d-2.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/Fit2d-2.png" src="_images/Fit2d-2.png" />
+</div>
+<p>Still looks okay.</p>
+<p>(<a class="reference external" href=".//Fit2d-3.py">Source code</a>, <a class="reference external" href=".//Fit2d-3.png">png</a>, <a class="reference external" href=".//Fit2d-3.hires.png">hires.png</a>, <a class="reference external" href=".//Fit2d-3.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/Fit2d-3.png" src="_images/Fit2d-3.png" />
+</div>
+<p>(<a class="reference external" href=".//Fit2d-4.py">Source code</a>, <a class="reference external" href=".//Fit2d-4.png">png</a>, <a class="reference external" href=".//Fit2d-4.hires.png">hires.png</a>, <a class="reference external" href=".//Fit2d-4.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/Fit2d-4.png" src="_images/Fit2d-4.png" />
+</div>
+<p>In the Tail region the blue halo (Poisson error) signifies that there are not enough counts to make good statistics.</p>
+<p>(<a class="reference external" href=".//Fit2d-5.py">Source code</a>, <a class="reference external" href=".//Fit2d-5.png">png</a>, <a class="reference external" href=".//Fit2d-5.hires.png">hires.png</a>, <a class="reference external" href=".//Fit2d-5.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/Fit2d-5.png" src="_images/Fit2d-5.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="PolCorr.html"
+                        title="previous chapter">Polarization Correction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ConstantImage.html"
+                        title="next chapter">Integrating a Constant Image With Masked Values</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/Fit2d.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ConstantImage.html" title="Integrating a Constant Image With Masked Values"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="PolCorr.html" title="Polarization Correction"
+             >previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li>
+          <li><a href="TheTechnology.html" >The Technology</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Christian Meisenbichler.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

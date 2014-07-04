@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Install &mdash; SAXS 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="SAXS 0.2.1 documentation" href="index.html" />
+    <link rel="next" title="The Tools" href="TheTools.html" />
+    <link rel="prev" title="SAXS’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="TheTools.html" title="The Tools"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="SAXS’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="install">
+<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<p>The SAXS Package is distributes as a Python package. So in order to use it, you need a Python system installed.
+It depends on following Python modules that don&#8217;t come with the standard Python:</p>
+<div class="highlight-python"><div class="highlight"><pre>numpy scipy matplotlib jsonschema bitarray watchdog sphinxcontrib-programoutput
+</pre></div>
+</div>
+<p>they are all available through &#8220;pip&#8221; so the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt;&gt;pip install numpy scipy matplotlib jsonschema bitarray watchdog sphinxcontrib-programoutput
+</pre></div>
+</div>
+<p>Should get all the modules.
+For Windows, use the Anaconda Python distribution which includes pip.</p>
+<p>The code can be obtained on github: <a class="reference external" href="https://github.com/ChristianMeisenbichler/SAXS">https://github.com/ChristianMeisenbichler/SAXS</a> where you would
+also find a &#8220;Download Zip&#8221; button.
+After unpacking or cloning with git you end up with a directory called &#8220;SAXS&#8221; containing the files.
+Go there, and type into the commad line:</p>
+<div class="code highlight-python"><div class="highlight"><pre>python setup.py install
+</pre></div>
+</div>
+<p>This installs the Python module where it is found by Python, creates the command line tools and
+installs them on the system. Where that is, depends on the Python installation.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">SAXS&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="TheTools.html"
+                        title="next chapter">The Tools</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/install.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="TheTools.html" title="The Tools"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="SAXS’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Christian Meisenbichler.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

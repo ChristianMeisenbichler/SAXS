@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Polarization Correction &mdash; SAXS 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="SAXS 0.2.1 documentation" href="index.html" />
+    <link rel="up" title="The Technology" href="TheTechnology.html" />
+    <link rel="next" title="Compare With Fit2d" href="Fit2d.html" />
+    <link rel="prev" title="The Geometry" href="Geometry.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Fit2d.html" title="Compare With Fit2d"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Geometry.html" title="The Geometry"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li>
+          <li><a href="TheTechnology.html" accesskey="U">The Technology</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="polarization-correction">
+<h1>Polarization Correction<a class="headerlink" href="#polarization-correction" title="Permalink to this headline">¶</a></h1>
+<p>The polarization correction is expected to be small at small angles, but it is deemed important.</p>
+<div class="math">
+\[I_{cor} = I_j \left[P (1 - (sin(\phi) sin(2\theta ))^2 )
+(1 - P )(1 - (cos(\phi) sin(2\theta ))^2 )\right]\]</div>
+<p>where <span class="math">\(\phi\)</span>  is the azimuthal angle on the detector surface
+(defined here clockwise, 0 at 12 o&#8217;clock) <span class="math">\(2\theta\)</span> the scattering
+angle, and <span class="math">\(P\)</span> the fraction of incident radiation polarized
+in the horizontal plane (azimuthal angle of <span class="math">\(90^{\circ}\)</span>)
+The polarization correction is configured by two parameters in <a class="reference internal" href="SAXSSchema.html#polarizationcorrection"><em>PolarizationCorrection</em></a>.
+Its factors are included in the integration matrix (operator).</p>
+<p>This input:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;PixelPerRadialElement&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">&quot;Imagesize&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">1043</span><span class="p">,</span>
+        <span class="mi">981</span>
+    <span class="p">],</span>
+    <span class="s">&quot;Tilt&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;TiltAngleDeg&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.56</span><span class="p">,</span>
+        <span class="s">&quot;TiltRotDeg&quot;</span><span class="p">:</span> <span class="mf">73.569</span>
+    <span class="p">},</span>
+    <span class="s">&quot;MaskFile&quot;</span><span class="p">:</span> <span class="s">&quot;../data/AAA_integ.msk&quot;</span><span class="p">,</span>
+    <span class="s">&quot;PolarizationCorrection&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;Angle&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;Fraction&quot;</span><span class="p">:</span><span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="s">&quot;Oversampling&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">&quot;Wavelength&quot;</span><span class="p">:</span> <span class="mf">1.54</span><span class="p">,</span>
+    <span class="s">&quot;DedectorDistanceMM&quot;</span><span class="p">:</span> <span class="mf">1031.657</span><span class="p">,</span>
+    <span class="s">&quot;BeamCenter&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">808.37</span><span class="p">,</span>
+        <span class="mf">387.772</span>
+    <span class="p">],</span>
+    <span class="s">&quot;PixelSizeMicroM&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">172.0</span><span class="p">,</span>
+        <span class="mf">172.0</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Gives:</p>
+<p>(<a class="reference external" href=".//PolCorr-1.py">Source code</a>, <a class="reference external" href=".//PolCorr-1.png">png</a>, <a class="reference external" href=".//PolCorr-1.hires.png">hires.png</a>, <a class="reference external" href=".//PolCorr-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/PolCorr-1.png" src="_images/PolCorr-1.png" />
+</div>
+<p>If the correction factors are all correctly in the algorithm,
+the integration of an image containing <span class="math">\(1/I_{corr}\)</span> should give constant 1.0.</p>
+<p>(<a class="reference external" href=".//PolCorr-2.py">Source code</a>, <a class="reference external" href=".//PolCorr-2.png">png</a>, <a class="reference external" href=".//PolCorr-2.hires.png">hires.png</a>, <a class="reference external" href=".//PolCorr-2.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/PolCorr-2.png" src="_images/PolCorr-2.png" />
+</div>
+<p>Just for checking: integrating a picture with only ones gives something different:</p>
+<p>(<a class="reference external" href=".//PolCorr-3.py">Source code</a>, <a class="reference external" href=".//PolCorr-3.png">png</a>, <a class="reference external" href=".//PolCorr-3.hires.png">hires.png</a>, <a class="reference external" href=".//PolCorr-3.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/PolCorr-3.png" src="_images/PolCorr-3.png" />
+</div>
+<p>This are the wiggles that come from the polarisation corection pattern</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Geometry.html"
+                        title="previous chapter">The Geometry</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Fit2d.html"
+                        title="next chapter">Compare With Fit2d</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/PolCorr.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Fit2d.html" title="Compare With Fit2d"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Geometry.html" title="The Geometry"
+             >previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li>
+          <li><a href="TheTechnology.html" >The Technology</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Christian Meisenbichler.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

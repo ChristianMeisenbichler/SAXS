@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Integration as Matrix-Vector Multiplication &mdash; SAXS 0.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="SAXS 0.2.1 documentation" href="index.html" />
+    <link rel="up" title="The Technology" href="TheTechnology.html" />
+    <link rel="next" title="The Geometry" href="Geometry.html" />
+    <link rel="prev" title="The Technology" href="TheTechnology.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Geometry.html" title="The Geometry"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="TheTechnology.html" title="The Technology"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li>
+          <li><a href="TheTechnology.html" accesskey="U">The Technology</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="integration-as-matrix-vector-multiplication">
+<h1>Integration as Matrix-Vector Multiplication<a class="headerlink" href="#integration-as-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h1>
+<p>Every SAXS image <span class="math">\(\mathbf p\)</span> is a list of pixels that have an intensity value.
+This 2d array might as well be addressed as a vector with all the pixels addressable with one index <span class="math">\(\mathbf p_i\)</span>.</p>
+<p>The integration over pixels that are within a certain radial interval is
+in any case a weighted sum of some of the pixels.</p>
+<p>This weighted sum is a scalar product with another vector containing the weight factors.
+As only the pixels in a radius interval are counted, most of these factors are 0.</p>
+<div class="math">
+\[r=\mathbf c \cdot \mathbf p\]</div>
+<p>As we intend to do all the radial intervals at once, we write it as a matrix vector product.</p>
+<div class="math">
+\[\mathbf r=\mathbf X \cdot \mathbf p\]</div>
+<p>The columns are the weight factors for the <span class="math">\(i^{th}\)</span> radial element.
+Rearranged in the order of the image, this looks like the ring element relevant for the radial Point.</p>
+<p>This matrix would be quite big as it has the dimensions len(<span class="math">\(\mathbf r\)</span>)*len(<span class="math">\(\mathbf p\)</span>). Fortunately most
+of the entries are 0 and we can use a sparse matrix representation which uses only about ~len(<span class="math">\(\mathbf p\)</span>)
+of memory, as every pixel is counted only once, or, as we will see, about once.</p>
+<p>(<a class="reference external" href=".//MatrixMulti-1.py">Source code</a>)</p>
+<div class="figure">
+<img alt="_images/ringNoOv.png" src="_images/ringNoOv.png" />
+<p class="caption">The vector <span class="math">\(\mathbf c\)</span> displayed as image.</p>
+</div>
+<p>Figure <em class="xref std std-ref">CircleNoAA</em> Scows the data of such a matrix column.</p>
+</div>
+<div class="section" id="oversampling">
+<h1>Oversampling<a class="headerlink" href="#oversampling" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="circle">
+<img alt="_images/ring.png" src="_images/ring.png" />
+<p class="caption">Ring with antialiasing / oversampling.</p>
+</div>
+<p>A pixel might lie on the border of two radial intervals, making it
+unclear to which one it should be added. By only choosing the nearest
+one, one may get artifacts in the resulting curve especially when only few pixels contribute.
+So, how could we calculate to which fraction a pixel should account to one radial interval?</p>
+<p>The idea here is to use an algorithm comparable to antialiasing in computer graphics.
+We will divide a much larger picture into the radial intervals and downsample it to the real pixels.
+Which results in nicely balanced factors for the border pixels that add
+up nicely over joining  intervals such that the intensity is conserved. If one looks closer at image <a class="reference internal" href="#circle"><em>Ring with antialiasing / oversampling.</em></a> ,
+one sees that the ring has soft edges. Quite as it would have through antialiasing.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Integration as Matrix-Vector Multiplication</a></li>
+<li><a class="reference internal" href="#oversampling">Oversampling</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="TheTechnology.html"
+                        title="previous chapter">The Technology</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Geometry.html"
+                        title="next chapter">The Geometry</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/MatrixMulti.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Geometry.html" title="The Geometry"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="TheTechnology.html" title="The Technology"
+             >previous</a> |</li>
+        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li>
+          <li><a href="TheTechnology.html" >The Technology</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Christian Meisenbichler.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
