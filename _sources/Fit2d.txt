@@ -27,6 +27,8 @@ Okay, this doesn't show much but if we plot the difference:
    o=SAXS.AttrDict(o)
    o['compare']=True
    o.log=False
+   o.yax='linear'
+   o.xax='linear'
    o.title="Difference"
    o.legend=True 
    o.plotfile=""
@@ -40,6 +42,8 @@ Still looks okay.
    arg=["../doc/data/fit2d","../doc/data/saxsdog"]
    o={}
    o=SAXS.AttrDict(o)
+   o.yax='linear'
+   o.xax='linear'
    o['compare']=False
    o.log=False
    o.title="From the middle"
@@ -58,6 +62,8 @@ Still looks okay.
    o=SAXS.AttrDict(o)
    o['compare']=False
    o.log=False
+   o.yax='linear'
+   o.xax='linear'
    o.title="Tail Region"
    o.legend=True
    o.plotfile=""
@@ -75,6 +81,8 @@ In the Tail region the blue halo (Poisson error) signifies that there are not en
    o=SAXS.AttrDict(o)
    o['compare']=False
    o.log=True
+   o.yax='linear'
+   o.xax='linear'
    o.title="Close to Beam"
    o.legend=True
    o.plotfile=""

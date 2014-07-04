@@ -23,6 +23,8 @@ diffraction curve.
    o=SAXS.AttrDict(o)
    o['compare']=False
    o.log=False
+   o.yax='linear'
+   o.xax='linear'
    o.title="Diffraction Curve"
    o.legend=False
    o.plotfile=""
