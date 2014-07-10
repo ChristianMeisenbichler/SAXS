@@ -71,7 +71,7 @@ Still looks okay.
    o.clip=40
    SAXS.makeplot(o,arg)
 
-In the Tail region the blue halo (Poisson error) signifies that there are not enough counts to make good statistics.
+In the tail region the blue halo (Poisson error) signifies that there are not enough counts to make good statistics.
    
 .. plot:: 
 
