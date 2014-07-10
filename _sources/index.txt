@@ -44,6 +44,7 @@ and :ref:`converter`
    TheTools
    SAXSSchemaDoc
    TheTechnology
+   Server
    SAXSapi
  
 

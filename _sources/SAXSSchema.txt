@@ -4,13 +4,7 @@
 
 .. role:: red
 
-.. _root:
-
-
-JSON Configuration File
-=======================
-
-.. _required:
+.. _root:.. _required:
 
  The ':red:`*`' signifies a required Field.
 

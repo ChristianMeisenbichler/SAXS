@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SAXS Module API &mdash; SAXS 0.2.1 documentation</title>
+    <title>SAXS Module API &mdash; SAXS 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.1',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="SAXS 0.2.1 documentation" href="index.html" />
-    <link rel="prev" title="Statistics" href="Statistics.html" /> 
+    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html" />
+    <link rel="prev" title="The Saxsdog Server" href="SAXSProtocol.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,9 +35,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Statistics.html" title="Statistics"
+          <a href="SAXSProtocol.html" title="The Saxsdog Server"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +57,7 @@ After initialization, the <a class="reference internal" href="#SAXS.calibration.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<em>string</em>) &#8211; is the path to the <a class="reference internal" href="SAXSSchema.html#root"><em>JSON Configuration File</em></a>:</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<em>string</em>) &#8211; is the path to the <em class="xref std std-ref">root</em>:</td>
 </tr>
 </tbody>
 </table>
@@ -246,6 +246,24 @@ Fit2d info file to the JSON data used by the SAXS.callibration class.</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="SAXS.Server">
+<em class="property">class </em><tt class="descclassname">SAXS.</tt><tt class="descname">Server</tt><a class="headerlink" href="#SAXS.Server" title="Permalink to this definition">¶</a></dt>
+<dd><p>class to manage a saxsdog server</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SAXS.initcommand">
+<tt class="descclassname">SAXS.</tt><tt class="descname">initcommand</tt><big>(</big><em>options</em>, <em>arg</em><big>)</big><a class="headerlink" href="#SAXS.initcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface for issuing leash commands</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SAXS.validateResponse">
+<tt class="descclassname">SAXS.</tt><tt class="descname">validateResponse</tt><big>(</big><em>message</em><big>)</big><a class="headerlink" href="#SAXS.validateResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate response from saxsdog server against the schema.</p>
+</dd></dl>
+
 </div>
 
 
@@ -255,8 +273,8 @@ Fit2d info file to the JSON data used by the SAXS.callibration class.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="Statistics.html"
-                        title="previous chapter">Statistics</a></p>
+  <p class="topless"><a href="SAXSProtocol.html"
+                        title="previous chapter">The Saxsdog Server</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/SAXSapi.txt"
@@ -286,9 +304,9 @@ Fit2d info file to the JSON data used by the SAXS.callibration class.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Statistics.html" title="Statistics"
+          <a href="SAXSProtocol.html" title="The Saxsdog Server"
              >previous</a> |</li>
-        <li><a href="index.html">SAXS 0.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
