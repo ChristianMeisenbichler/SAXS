@@ -62,7 +62,7 @@ The &#8220;Saxs Feeder&#8221; puplishes new file Events and the &#8220;Saxs Leas
 with each other and which also includes a shared secred for authentication.
 If you want two computers to connect via the Saxsleash you need to have a copy of the file on each of them.</p>
 <p>To create such a configuration, use the command:</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsnetconf</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsnetconf
 </pre></div>
 </div>
 <p>It will ask for the Feeder
@@ -72,7 +72,7 @@ to the other computers you need to allow to conect to your network. The secret m
 <div class="code highlight-python"><div class="highlight"><pre><span class="p">{</span>
    <span class="s">&quot;ServerUrl&quot;</span><span class="p">:</span><span class="s">&quot;tcp://hostname:port&quot;</span><span class="p">,</span>
    <span class="s">&quot;FeederUrl&quot;</span><span class="p">:</span><span class="s">&quot;tcp://hostname:port&quot;</span><span class="p">,</span>
-   <span class="s">&quot;Secret&quot;</span><span class="p">:</span><span class="s">&quot;kljjkb4b3kjbk4bkjdbkjsdni8893nslsdf8d7f89diweh&quot;</span>
+   <span class="s">&quot;Secret&quot;</span><span class="p">:</span><span class="s">&quot;Some large random string.&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -123,7 +123,7 @@ Options:
 the processed data, one has to send the commands to setup a calibration.</p>
 <div class="section" id="new">
 <h3>New<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsleash new cal.json data/AAA_integ.msk data/</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsleash new cal.json data/AAA_integ.msk data/
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">new</span></tt> command loads a calibration and starts the queue to receive new files. It requires 3 arguments:</p>
@@ -139,7 +139,7 @@ the processed data, one has to send the commands to setup a calibration.</p>
 </div>
 <div class="section" id="plot">
 <h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsleash plot</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsleash plot
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">plot</span></tt> command will grab the next image and show a plot of the result in a window.
@@ -147,14 +147,14 @@ This command will be repeated until the user interrupts it with <tt class="docut
 </div>
 <div class="section" id="close">
 <h3>Close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h3>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsleash close</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsleash close
 </pre></div>
 </div>
 <p>Closes the queue. Which means, the server will process what is left in the queue but ignore all new files.</p>
 </div>
 <div class="section" id="abort">
 <h3>Abort<a class="headerlink" href="#abort" title="Permalink to this headline">¶</a></h3>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsleash abort</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsleash abort
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">abort</span></tt> command will close the queue  and stop all data processing processes.
@@ -163,14 +163,14 @@ The remaining pictures in the queue are ignored.</p>
 </div>
 <div class="section" id="stat">
 <h3>Stat<a class="headerlink" href="#stat" title="Permalink to this headline">¶</a></h3>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsleash stat</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsleash stat
 </pre></div>
 </div>
 <p>Return basic statistics data about the processes.</p>
 </div>
 <div class="section" id="read-dir">
 <h3>Read Dir<a class="headerlink" href="#read-dir" title="Permalink to this headline">¶</a></h3>
-<div class="code highlight-python"><div class="highlight"><pre><span class="c"># saxsleash readdir</span>
+<div class="code highlight-python"><div class="highlight"><pre>$ saxsleash readdir
 </pre></div>
 </div>
 <p>This command will put all the images in the configured directory into the queue.
