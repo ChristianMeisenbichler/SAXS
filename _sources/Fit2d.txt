@@ -49,7 +49,7 @@ Still looks okay.
    o.title="From the middle"
    o.legend=True
    o.plotfile=""
-   o.skip=350 
+   o.skip=350  
    o.clip=480
    SAXS.makeplot(o,arg)
 
