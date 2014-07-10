@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>command &mdash; SAXS 0.3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <style> .red {color:red} </style><blockquote id="root-required">
+<div>The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</div></blockquote>
+<p>Schema for requests from Saxs Leash to Saxs Server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><a class="reference internal" href="SAXSProtocol.html#command"><em>command</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>, <a class="reference internal" href="SAXSProtocol.html#sign"><em>sign</em></a>, <a class="reference internal" href="SAXSProtocol.html#time"><em>time</em></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em></td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;command&quot;</span><span class="p">:</span> <span class="s">&quot;close&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="command">
+<span id="id1"></span><h1>command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">values:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[u'close',</span> <span class="pre">u'abort',</span> <span class="pre">u'new',</span> <span class="pre">u'plot',</span> <span class="pre">u'readdir',</span> <span class="pre">u'stat']</span></tt></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#command"><em>command</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;command&quot;</span><span class="p">:</span> <span class="s">&quot;close&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="argument">
+<span id="id2"></span><h1>argument<a class="headerlink" href="#argument" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><a class="reference internal" href="SAXSProtocol.html#directory"><em>directory</em></a>, <a class="reference internal" href="SAXSProtocol.html#calibration"><em>calibration</em></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;argument&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="directory">
+<span id="id3"></span><h1>directory<a class="headerlink" href="#directory" title="Permalink to this headline">¶</a></h1>
+<p>Directory this queue is going to use. New files in other directories are going to be ignored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#directory"><em>directory</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calibration">
+<span id="id4"></span><h1>calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h1>
+<p>Calibrarion data according to <a class="reference internal" href="SAXSSchemaDoc.html#calib"><em>The Calibration File</em></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><em class="xref std std-ref">/</em></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">False</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#calibration"><em>calibration</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;calibration&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sign">
+<span id="id5"></span><h1>sign<a class="headerlink" href="#sign" title="Permalink to this headline">¶</a></h1>
+<p>Signature of request</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#sign"><em>sign</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;sign&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time">
+<span id="id6"></span><h1>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h1>
+<p>time in seconds (pythons time.time())</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">number</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#time"><em>time</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">command</a></li>
+<li><a class="reference internal" href="#argument">argument</a></li>
+<li><a class="reference internal" href="#directory">directory</a></li>
+<li><a class="reference internal" href="#calibration">calibration</a></li>
+<li><a class="reference internal" href="#sign">sign</a></li>
+<li><a class="reference internal" href="#time">time</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/SAXSLeashRequest.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Christian Meisenbichler.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
