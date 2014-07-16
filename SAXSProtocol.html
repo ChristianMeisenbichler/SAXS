@@ -88,7 +88,7 @@ only send this event, when the file is completly written to the file system.</p>
     <span class="n">usage</span> <span class="o">=</span> <span class="s">&quot;usage: %prog [options]  &quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">(</span><span class="n">usage</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;--port&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;port&quot;</span><span class="p">,</span>
-                      <span class="n">help</span><span class="o">=</span><span class="s">&quot;Port to offer file changes service&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s">&quot;port&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;5556&quot;</span><span class="p">)</span>
+                      <span class="n">help</span><span class="o">=</span><span class="s">&quot;Port to offer file changes service&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s">&quot;port&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;-d&quot;</span><span class="p">,</span> <span class="s">&quot;--dir&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;dir&quot;</span><span class="p">,</span>
                       <span class="n">help</span><span class="o">=</span><span class="s">&quot;Directory to monitor&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s">&quot;dir&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
     <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
@@ -97,8 +97,13 @@ only send this event, when the file is completly written to the file system.</p>
     
     <span class="n">context</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
     <span class="n">socket</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">PUB</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;conecting:&quot;</span><span class="p">,</span><span class="s">&quot;tcp://*:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">options</span><span class="o">.</span><span class="n">port</span>
-    <span class="n">socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&quot;tcp://*:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">options</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">port</span><span class="o">==</span><span class="s">&quot;&quot;</span><span class="p">:</span>
+        <span class="n">conf</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&quot;~&quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="s">&quot;.saxdognetwork&quot;</span><span class="p">)))</span> 
+        <span class="n">port</span><span class="o">=</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;Feeder&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">port</span>
+    <span class="k">print</span> <span class="s">&quot;conecting:&quot;</span><span class="p">,</span><span class="s">&quot;tcp://*:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">port</span>
+    <span class="n">socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&quot;tcp://*:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
     
     <span class="n">fileslist</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">dir</span><span class="p">):</span>
@@ -324,7 +329,7 @@ During the processing, it shows a graph of one of the current images.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string</td>
 </tr>
-<tr class="field-even field"><th class="field-name">values:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[u'close',</span> <span class="pre">u'abort',</span> <span class="pre">u'new',</span> <span class="pre">u'plot',</span> <span class="pre">u'readdir',</span> <span class="pre">u'stat']</span></tt></td>
+<tr class="field-even field"><th class="field-name">values:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[u'close',</span> <span class="pre">u'abort',</span> <span class="pre">u'new',</span> <span class="pre">u'get',</span> <span class="pre">u'plot',</span> <span class="pre">u'plotdata',</span> <span class="pre">u'readdir',</span> <span class="pre">u'stat']</span></tt></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">True</td>
 </tr>
@@ -345,7 +350,7 @@ During the processing, it shows a graph of one of the current images.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">object</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><a class="reference internal" href="#directory"><em>directory</em></a>, <a class="reference internal" href="#calibration"><em>calibration</em></a></td>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>, <a class="reference internal" href="#calibration"><em>calibration</em></a></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
@@ -369,7 +374,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="#directory"><em>directory</em></a>&#8216;]</td>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -491,7 +496,7 @@ During the processing, it shows a graph of one of the current images.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">object</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><a class="reference internal" href="#cal"><em>cal</em></a>, <a class="reference internal" href="#id11"><em>Error</em></a>, <a class="reference internal" href="#id13"><em>stat</em></a>, <a class="reference internal" href="#filename"><em>filename</em></a>, <a class="reference internal" href="#array"><em>array</em></a></td>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><a class="reference internal" href="#cal"><em>cal</em></a>, <a class="reference internal" href="#id11"><em>Error</em></a>, <a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>, <a class="reference internal" href="#id15"><em>stat</em></a>, <a class="reference internal" href="#filename"><em>filename</em></a>, <a class="reference internal" href="#array"><em>array</em></a></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">True</td>
 </tr>
@@ -543,7 +548,26 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="id13">
-<span id="id14"></span><h2>stat<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>directory<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>&#8216;]</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<span id="id16"></span><h2>stat<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -554,7 +578,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id13"><em>stat</em></a>&#8216;]</td>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -564,7 +588,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="queue-length">
-<span id="id15"></span><h2>queue length<a class="headerlink" href="#queue-length" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>queue length<a class="headerlink" href="#queue-length" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -573,7 +597,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id13"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#queue-length"><em>queue length</em></a>&#8216;]</td>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#queue-length"><em>queue length</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -583,7 +607,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="images-processed">
-<span id="id16"></span><h2>images processed<a class="headerlink" href="#images-processed" title="Permalink to this headline">¶</a></h2>
+<span id="id18"></span><h2>images processed<a class="headerlink" href="#images-processed" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -592,7 +616,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id13"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#images-processed"><em>images processed</em></a>&#8216;]</td>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#images-processed"><em>images processed</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -602,7 +626,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="time-interval">
-<span id="id17"></span><h2>time interval<a class="headerlink" href="#time-interval" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>time interval<a class="headerlink" href="#time-interval" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -611,7 +635,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id13"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#time-interval"><em>time interval</em></a>&#8216;]</td>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#time-interval"><em>time interval</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -621,7 +645,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="frames-per-sec">
-<span id="id18"></span><h2>frames per sec<a class="headerlink" href="#frames-per-sec" title="Permalink to this headline">¶</a></h2>
+<span id="id20"></span><h2>frames per sec<a class="headerlink" href="#frames-per-sec" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -630,7 +654,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id13"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#frames-per-sec"><em>frames per sec</em></a>&#8216;]</td>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#frames-per-sec"><em>frames per sec</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -640,7 +664,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="pics">
-<span id="id19"></span><h2>pics<a class="headerlink" href="#pics" title="Permalink to this headline">¶</a></h2>
+<span id="id21"></span><h2>pics<a class="headerlink" href="#pics" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -649,7 +673,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body">False</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id13"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#pics"><em>pics</em></a>&#8216;]</td>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#pics"><em>pics</em></a>&#8216;]</td>
 </tr>
 </tbody>
 </table>
@@ -659,7 +683,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="filename">
-<span id="id20"></span><h2>filename<a class="headerlink" href="#filename" title="Permalink to this headline">¶</a></h2>
+<span id="id22"></span><h2>filename<a class="headerlink" href="#filename" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -678,7 +702,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="array">
-<span id="id21"></span><h2>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h2>
+<span id="id23"></span><h2>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -732,7 +756,8 @@ During the processing, it shows a graph of one of the current images.</p>
 <li><a class="reference internal" href="#data">data</a></li>
 <li><a class="reference internal" href="#cal">cal</a></li>
 <li><a class="reference internal" href="#id11">Error</a></li>
-<li><a class="reference internal" href="#id13">stat</a></li>
+<li><a class="reference internal" href="#id13">directory</a></li>
+<li><a class="reference internal" href="#id15">stat</a></li>
 <li><a class="reference internal" href="#queue-length">queue length</a></li>
 <li><a class="reference internal" href="#images-processed">images processed</a></li>
 <li><a class="reference internal" href="#time-interval">time interval</a></li>

@@ -96,14 +96,29 @@ Options:
                         Feeder)
   -w, --watch           Watch directory for changes, using file system events
                         recursively for all sub directories.
+  -o OUTDIR, --out=OUTDIR
+                        Specify output directory. Default is &#39;./out&#39;.
+  -i, --inplace         Files are written, in place, in the directory of the
+                        image.
 </pre></div>
 </div>
 </div>
 <div class="section" id="the-saxs-leash">
 <h2>The Saxs Leash<a class="headerlink" href="#the-saxs-leash" title="Permalink to this headline">¶</a></h2>
-<p>The &#8220;Saxs Leash&#8221; client can issue the commands for the Saxsdog Server. It has a commandline interface only, for now.</p>
+<p>The Leash Program is a GUI to load calibrations into the Saxdog Server and monitor the processing of the data.
+It provides a calibration editor, as mask preview and basic data import from <em class="xref std std-ref">saxsconverter</em>.</p>
+<p>The main window has 3 tab cards. The first is for setting up the server,
+the second to review the currently processed data and the third for basic statistics. The command to launch it is.</p>
+<div class="highlight-python"><div class="highlight"><pre>$ Leash
+</pre></div>
+</div>
+<img alt="_images/screenshot_id0.png" src="_images/screenshot_id0.png" />
+</div>
+<div class="section" id="saxs-leash-commandline">
+<h2>Saxs Leash Commandline<a class="headerlink" href="#saxs-leash-commandline" title="Permalink to this headline">¶</a></h2>
+<p>The &#8220;Saxs Leash&#8221; client can issue the commands for the Saxsdog Server.</p>
 <div class="highlight-text"><div class="highlight"><pre>$ saxsleash --help
-Usage: saxsleash close|abort|new|plot|readdir|stat [options] [arguments]
+Usage: saxsleash close|abort|new|get|plot|plotdata|readdir|stat [options] [arguments]
 
 Options:
   -h, --help            show this help message and exit
@@ -207,7 +222,8 @@ This is usefull to reprocess pictures.</p>
 <li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#data">data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#cal">cal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#id11">Error</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#id13">stat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#id13">directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#id15">stat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#queue-length">queue length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#images-processed">images processed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SAXSProtocol.html#time-interval">time interval</a></li>
@@ -233,7 +249,8 @@ This is usefull to reprocess pictures.</p>
 <li><a class="reference internal" href="#">The Saxsdog Network</a><ul>
 <li><a class="reference internal" href="#the-saxsnetwork-configuration">The SAXSNetwork configuration</a></li>
 <li><a class="reference internal" href="#the-saxsdog-server">The Saxsdog Server</a></li>
-<li><a class="reference internal" href="#the-saxs-leash">The Saxs Leash</a><ul>
+<li><a class="reference internal" href="#the-saxs-leash">The Saxs Leash</a></li>
+<li><a class="reference internal" href="#saxs-leash-commandline">Saxs Leash Commandline</a><ul>
 <li><a class="reference internal" href="#new">New</a></li>
 <li><a class="reference internal" href="#plot">Plot</a></li>
 <li><a class="reference internal" href="#close">Close</a></li>
