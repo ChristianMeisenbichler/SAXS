@@ -129,7 +129,7 @@ Options:
 </div>
 <div class="section" id="saxsdmerge">
 <h2>Saxsdmerge<a class="headerlink" href="#saxsdmerge" title="Permalink to this headline">¶</a></h2>
-<p>This Tool adresses a very specific problem only aplicable under our special needs.</p>
+<p>This tool adresses a very specific problem only aplicable under our groups needs.</p>
 <div class="highlight-text"><div class="highlight"><pre>$ saxsdmerge --help
 /usr/local/lib/python2.7/dist-packages/pandas/io/excel.py:626: UserWarning: Installed openpyxl is not supported at this time. Use &gt;=1.6.1 and &lt;2.0.0.
   .format(openpyxl_compat.start_ver, openpyxl_compat.stop_ver))
@@ -151,11 +151,16 @@ Options:
   -b, --batch           Batch mode (no plot).
 </pre></div>
 </div>
-<p>What it does is the following. It merges the two logfiles
-by interpolating the   1 sec interval dataloger at the shutter event times.
+<p>What it does is the following: It merges the two logfiles
+by interpolating the 1 sec interval dataloger at the shutter event times.
 The interpolation method takes the closest previous entry. The two logfiles are presumed
 to have the same clock. This data is then merged with the data
-extracted from the image headers and written to a ouput file as a Table.</p>
+extracted from the image headers and written to a ouput file as a Table.
+As the image timestaps are from a different clock which might have a significant
+offset, the <tt class="docutils literal"><span class="pre">-1</span></tt> and <tt class="docutils literal"><span class="pre">-t</span></tt> options allow for dealing with that.
+In order to check if the time syncronisation is reasonable, the tool displays a
+graph with the shutter times and the exposure times from the images.</p>
+<p>At the moment it works only with Pilatus 1M image data.</p>
 </div>
 </div>
 

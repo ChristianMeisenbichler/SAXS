@@ -41,13 +41,19 @@ The tool "plotchi"  plots a list of ".chi"-files:
 Saxsdmerge
 ~~~~~~~~~~
 
-This Tool adresses a very specific problem only aplicable under our special needs.
+This tool adresses a very specific problem only aplicable under our groups needs.
 
 .. command-output:: saxsdmerge --help
 
-What it does is the following. It merges the two logfiles
-by interpolating the   1 sec interval dataloger at the shutter event times. 
+What it does is the following: It merges the two logfiles
+by interpolating the 1 sec interval dataloger at the shutter event times. 
 The interpolation method takes the closest previous entry. The two logfiles are presumed 
 to have the same clock. This data is then merged with the data 
 extracted from the image headers and written to a ouput file as a Table.
+As the image timestaps are from a different clock which might have a significant 
+offset, the ``-1`` and ``-t`` options allow for dealing with that. 
+In order to check if the time syncronisation is reasonable, the tool displays a 
+graph with the shutter times and the exposure times from the images.
+
+At the moment it works only with Pilatus 1M image data.
 
