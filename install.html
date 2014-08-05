@@ -54,11 +54,13 @@
 <h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
 <p>The SAXS Package is distributes as a Python package. So in order to use it, you need a Python system installed.
 It depends on following Python modules that don&#8217;t come with the standard Python:</p>
-<div class="highlight-python"><div class="highlight"><pre>numpy scipy matplotlib jsonschema bitarray watchdog sphinxcontrib-programoutput
+<div class="highlight-python"><div class="highlight"><pre>numpy scipy matplotlib jsonschema bitarray watchdog sphinxcontrib-programoutput\
+ sphinxcontrib-programscreenshot pyzmq
 </pre></div>
 </div>
 <p>they are all available through &#8220;pip&#8221; so the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt;&gt;pip install numpy scipy matplotlib jsonschema bitarray watchdog sphinxcontrib-programoutput
+<div class="highlight-python"><div class="highlight"><pre>&gt;&gt;pip numpy scipy matplotlib jsonschema bitarray watchdog sphinxcontrib-programoutput\
+ sphinxcontrib-programscreenshot pyzmq
 </pre></div>
 </div>
 <p>Should get all the modules.
@@ -71,7 +73,8 @@ Go there, and type into the commad line:</p>
 </pre></div>
 </div>
 <p>This installs the Python module where it is found by Python, creates the command line tools and
-installs them on the system. Where that is, depends on the Python installation.</p>
+installs them on the system. Where that is, depends on the Python installation.
+The setup script will also try to satisfy all the dependencies by downloading and installing them.</p>
 </div>
 
 

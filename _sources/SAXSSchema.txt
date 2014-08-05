@@ -18,7 +18,7 @@ The SAXS configuration file specifies the parameters of a SAXS sensor calibratio
 :Required:
   True
 :JSON Path:
-  :ref:`# <root>` 
+  * :ref:`# <root>` 
 
 Example JSON: 
 
@@ -57,7 +57,7 @@ Title
 :Required:
   False
 :JSON Path:
-  :ref:`# <root>` [':ref:`Title <Title>`']
+  * :ref:`# <root>` [':ref:`Title <Title>`']
 
 Example JSON: 
 
@@ -80,7 +80,7 @@ The sensor, usually is not perfectly perpenticular to the ray direction. The til
 :Required:
   True
 :JSON Path:
-  :ref:`# <root>` [':ref:`Tilt <Tilt>`']
+  * :ref:`# <root>` [':ref:`Tilt <Tilt>`']
 
 Example JSON: 
 
@@ -103,7 +103,7 @@ This gives the angel of the tilt direction.
 :Default:
   0
 :JSON Path:
-  :ref:`# <root>` [':ref:`Tilt <Tilt>`'][':ref:`TiltRotDeg <TiltRotDeg>`']
+  * :ref:`# <root>` [':ref:`Tilt <Tilt>`'][':ref:`TiltRotDeg <TiltRotDeg>`']
 
 Example JSON: 
 
@@ -126,7 +126,7 @@ This gives the angle between the ray direction and the normal to the sensor plan
 :Default:
   0
 :JSON Path:
-  :ref:`# <root>` [':ref:`Tilt <Tilt>`'][':ref:`TiltAngleDeg <TiltAngleDeg>`']
+  * :ref:`# <root>` [':ref:`Tilt <Tilt>`'][':ref:`TiltAngleDeg <TiltAngleDeg>`']
 
 Example JSON: 
 
@@ -149,7 +149,7 @@ Gives the beam center in pixel coorinates.
 :Default:
   [808.37, 387.772]
 :JSON Path:
-  :ref:`# <root>` [':ref:`BeamCenter <BeamCenter>`']
+  * :ref:`# <root>` [':ref:`BeamCenter <BeamCenter>`']
 
 Example JSON: 
 
@@ -172,7 +172,7 @@ Distance between diffraction center and sensor.
 :Default:
   1031.657
 :JSON Path:
-  :ref:`# <root>` [':ref:`DedectorDistanceMM <DedectorDistanceMM>`']
+  * :ref:`# <root>` [':ref:`DedectorDistanceMM <DedectorDistanceMM>`']
 
 Example JSON: 
 
@@ -195,7 +195,7 @@ Size of sensor image in pixel.
 :Default:
   [1043, 981]
 :JSON Path:
-  :ref:`# <root>` [':ref:`Imagesize <Imagesize>`']
+  * :ref:`# <root>` [':ref:`Imagesize <Imagesize>`']
 
 Example JSON: 
 
@@ -218,7 +218,7 @@ Path of Maskfile
 :Default:
   AAA_integ.msk
 :JSON Path:
-  :ref:`# <root>` [':ref:`MaskFile <MaskFile>`']
+  * :ref:`# <root>` [':ref:`MaskFile <MaskFile>`']
 
 Example JSON: 
 
@@ -241,7 +241,7 @@ Oversampling factor for radial integration. The higher, the longer the setup but
 :Default:
   3
 :JSON Path:
-  :ref:`# <root>` [':ref:`Oversampling <Oversampling>`']
+  * :ref:`# <root>` [':ref:`Oversampling <Oversampling>`']
 
 Example JSON: 
 
@@ -264,7 +264,7 @@ The pixel size on the sensor.
 :Default:
   [172.0]
 :JSON Path:
-  :ref:`# <root>` [':ref:`PixelSizeMicroM <PixelSizeMicroM>`']
+  * :ref:`# <root>` [':ref:`PixelSizeMicroM <PixelSizeMicroM>`']
 
 Example JSON: 
 
@@ -287,7 +287,7 @@ Expresses the width of a radial step in terms of pixels. '1' means :math:`\delta
 :Default:
   1
 :JSON Path:
-  :ref:`# <root>` [':ref:`PixelPerRadialElement <PixelPerRadialElement>`']
+  * :ref:`# <root>` [':ref:`PixelPerRadialElement <PixelPerRadialElement>`']
 
 Example JSON: 
 
@@ -310,7 +310,7 @@ Refined wavelength.
 :Default:
   1.54
 :JSON Path:
-  :ref:`# <root>` [':ref:`Wavelength <Wavelength>`']
+  * :ref:`# <root>` [':ref:`Wavelength <Wavelength>`']
 
 Example JSON: 
 
@@ -335,7 +335,7 @@ The scattering direction id dependend on the light polarization. This may be acc
 :Default:
   OrderedDict([(u'Fraction', 0.95), (u'Angle', 0)])
 :JSON Path:
-  :ref:`# <root>` [':ref:`PolarizationCorrection <PolarizationCorrection>`']
+  * :ref:`# <root>` [':ref:`PolarizationCorrection <PolarizationCorrection>`']
 
 Example JSON: 
 
@@ -358,7 +358,7 @@ Fraction of light polarized in the given (:ref:`Angle`) direction.
 :Default:
   0.95
 :JSON Path:
-  :ref:`# <root>` [':ref:`PolarizationCorrection <PolarizationCorrection>`'][':ref:`Fraction <Fraction>`']
+  * :ref:`# <root>` [':ref:`PolarizationCorrection <PolarizationCorrection>`'][':ref:`Fraction <Fraction>`']
 
 Example JSON: 
 
@@ -381,7 +381,7 @@ Angle of the polarization plane.
 :Default:
   0.0
 :JSON Path:
-  :ref:`# <root>` [':ref:`PolarizationCorrection <PolarizationCorrection>`'][':ref:`Angle <Angle>`']
+  * :ref:`# <root>` [':ref:`PolarizationCorrection <PolarizationCorrection>`'][':ref:`Angle <Angle>`']
 
 Example JSON: 
 

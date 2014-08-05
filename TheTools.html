@@ -127,6 +127,36 @@ Options:
 </pre></div>
 </div>
 </div>
+<div class="section" id="saxsdmerge">
+<h2>Saxsdmerge<a class="headerlink" href="#saxsdmerge" title="Permalink to this headline">¶</a></h2>
+<p>This Tool adresses a very specific problem only aplicable under our special needs.</p>
+<div class="highlight-text"><div class="highlight"><pre>$ saxsdmerge --help
+/usr/local/lib/python2.7/dist-packages/pandas/io/excel.py:626: UserWarning: Installed openpyxl is not supported at this time. Use &gt;=1.6.1 and &lt;2.0.0.
+  .format(openpyxl_compat.start_ver, openpyxl_compat.stop_ver))
+Usage: saxsdmerge [options] iMPicture/dir peakinteg.log datalogger.log
+
+Options:
+  -h, --help            show this help message and exit
+  -t SEC, --timeoffset=SEC
+                        Time offset between logging time and time in
+                        imagedata.
+  -1, --syncfirst       Sync time by taking the time difference between first
+                        shutter action and first image.
+  -o FILE, --outfile=FILE
+                        Write merged dataset to this file. Format is derived
+                        from the extesion.(.csv|.json|.hdf)
+  -i FILE, --imagedata=FILE
+                         Load image data from previously stored file
+                        (imgdata.pkl).
+  -b, --batch           Batch mode (no plot).
+</pre></div>
+</div>
+<p>What it does is the following. It merges the two logfiles
+by interpolating the   1 sec interval dataloger at the shutter event times.
+The interpolation method takes the closest previous entry. The two logfiles are presumed
+to have the same clock. This data is then merged with the data
+extracted from the image headers and written to a ouput file as a Table.</p>
+</div>
 </div>
 
 
@@ -141,6 +171,7 @@ Options:
 <li><a class="reference internal" href="#the-saxsdog">The Saxsdog</a></li>
 <li><a class="reference internal" href="#the-converter">The Converter</a></li>
 <li><a class="reference internal" href="#plotchi">Plotchi</a></li>
+<li><a class="reference internal" href="#saxsdmerge">Saxsdmerge</a></li>
 </ul>
 </li>
 </ul>
