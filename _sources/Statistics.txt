@@ -28,7 +28,8 @@ Rescaled over the number of pixels (:math:`P`) in the sum this gives:
    
 
 
-The :py:func:`SAXS.calibration.plot` method of the :py:class:`SAXS.calibration` class will give you the Poisson error along with the standard deviation. 
+The :py:func:`SAXS.calibration.plot` method of the :py:class:`SAXS.calibration` class will give you the Poisson error 
+along with the standard deviation. 
 So for regions, where the total number of counts is too small, you can see if there is a significant error. 
 This might occur, if too few pixels are used for a data point or the intensity is just to small.
 
@@ -72,5 +73,6 @@ The standard deviation is bright yellow and the Poison error is blueisch
    plt.title(r"Wrong Beam Center")
    
  
-If the calibration is wrong you will for example see in the standard deviation. Like in this example. Here the beam center is wrong
+If the calibration is wrong you will for example see in the standard deviation. 
+Like in this example. Here the beam center is wrong.
  

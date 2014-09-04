@@ -1,65 +1,138 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The Saxsdog Network &mdash; SAXS 0.3.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html" />
-    <link rel="next" title="The Saxsdog Server" href="SAXSProtocol.html" />
-    <link rel="prev" title="Statistics" href="Statistics.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="SAXSProtocol.html" title="The Saxsdog Server"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="Statistics.html" title="Statistics"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Saxsdog Network &mdash; SAXS 0.3.0 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html"/>
+        <link rel="next" title="The Saxsdog Server" href="SAXSProtocol.html"/>
+        <link rel="prev" title="Statistics" href="Statistics.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> SAXS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TheTools.html">The Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#the-saxsdog">The Saxsdog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#the-converter">The Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#plotchi">Plotchi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#saxsdmerge">Saxsdmerge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SAXSSchemaDoc.html">The Calibration File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SAXSSchemaDoc.html#calibration-file-reference">Calibration file Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TheTechnology.html">The Technology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="MatrixMulti.html">Integration as Matrix-Vector Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MatrixMulti.html#over-sampling">Over sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Geometry.html">The Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PolCorr.html">Polarization Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fit2d.html">Compare With Fit2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConstantImage.html">Integrating a Constant Image With Masked Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Statistics.html">Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">The Saxsdog Network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-saxsnetwork-configuration">The SAXSNetwork configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-saxsdog-server">The Saxsdog Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-saxs-leash">The Saxs Leash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saxs-leash-commandline">Saxs Leash Commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-saxsdog-network-protocol">The Saxsdog Network Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SAXSapi.html">SAXS Module API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SAXS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>The Saxsdog Network</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/Server.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
   <div class="section" id="the-saxsdog-network">
 <h1>The Saxsdog Network<a class="headerlink" href="#the-saxsdog-network" title="Permalink to this headline">¶</a></h1>
 <p>The network may consist of 3 different services. The &#8220;Saxsdog Server&#8221; does the image processing.
-The &#8220;Saxs Feeder&#8221; puplishes new file Events and the &#8220;Saxs Leash&#8221; controlls an configures the server.</p>
+The &#8220;Saxs Feeder&#8221; publishes new file Events and the &#8220;Saxs Leash&#8221; controls an configures the server.</p>
 <div class="figure">
 <img src="_images/Network.svg" /></div>
 <div class="section" id="the-saxsnetwork-configuration">
 <h2>The SAXSNetwork configuration<a class="headerlink" href="#the-saxsnetwork-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The Saxsdog Server and the Saxsleash have a common configuration file, which tells them how to connect
-with each other and which also includes a shared secred for authentication.
+with each other and which also includes a shared secret for authentication.
 If you want two computers to connect via the Saxsleash you need to have a copy of the file on each of them.</p>
 <p>To create such a configuration, use the command:</p>
 <div class="code highlight-python"><div class="highlight"><pre>$ saxsnetconf
@@ -68,16 +141,16 @@ If you want two computers to connect via the Saxsleash you need to have a copy o
 <p>It will ask for the Feeder
 URL and for the Saxsdog Server URL. Then it will generate a random secret and save the file in
 file in <tt class="docutils literal"><span class="pre">$Home/.saxdognetwork</span></tt>.  You will have to copy the file
-to the other computers you need to allow to conect to your network. The secret must be the same on all of them.</p>
+to the other computers you need to allow to connect to your network. The secret must be the same on all of them.</p>
 <div class="code highlight-python"><div class="highlight"><pre><span class="p">{</span>
-   <span class="s">&quot;ServerUrl&quot;</span><span class="p">:</span><span class="s">&quot;tcp://hostname:port&quot;</span><span class="p">,</span>
-   <span class="s">&quot;FeederUrl&quot;</span><span class="p">:</span><span class="s">&quot;tcp://hostname:port&quot;</span><span class="p">,</span>
+   <span class="s">&quot;Server&quot;</span><span class="p">:</span><span class="s">&quot;tcp://hostname:port&quot;</span><span class="p">,</span>
+   <span class="s">&quot;Feeder&quot;</span><span class="p">:</span><span class="s">&quot;tcp://hostname:port&quot;</span><span class="p">,</span>
    <span class="s">&quot;Secret&quot;</span><span class="p">:</span><span class="s">&quot;Some large random string.&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The authentication is done by hashing the request and the secret including a timestamp.
-The timestamp is checked if it lies within 900 seconds of the servers time.</p>
+<p>The authentication is done by hashing the request and the secret including a time stamp.
+The time stamp is checked if it lies within 900 seconds of the servers time.</p>
 </div>
 <div class="section" id="the-saxsdog-server">
 <h2>The Saxsdog Server<a class="headerlink" href="#the-saxsdog-server" title="Permalink to this headline">¶</a></h2>
@@ -134,7 +207,7 @@ Options:
                         [linear|log|symlog]
 </pre></div>
 </div>
-<p>Most of the commandline options are apout the <tt class="docutils literal"><span class="pre">plot</span></tt> command, but in order to visualize
+<p>Most of the command line options are about the <tt class="docutils literal"><span class="pre">plot</span></tt> command, but in order to visualize
 the processed data, one has to send the commands to setup a calibration.</p>
 <div class="section" id="new">
 <h3>New<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
@@ -189,7 +262,7 @@ The remaining pictures in the queue are ignored.</p>
 </pre></div>
 </div>
 <p>This command will put all the images in the configured directory into the queue.
-This is usefull to reprocess pictures.</p>
+This is useful to reprocess pictures.</p>
 </div>
 </div>
 <div class="section" id="the-saxsdog-network-protocol">
@@ -240,76 +313,68 @@ This is usefull to reprocess pictures.</p>
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">The Saxsdog Network</a><ul>
-<li><a class="reference internal" href="#the-saxsnetwork-configuration">The SAXSNetwork configuration</a></li>
-<li><a class="reference internal" href="#the-saxsdog-server">The Saxsdog Server</a></li>
-<li><a class="reference internal" href="#the-saxs-leash">The Saxs Leash</a></li>
-<li><a class="reference internal" href="#saxs-leash-commandline">Saxs Leash Commandline</a><ul>
-<li><a class="reference internal" href="#new">New</a></li>
-<li><a class="reference internal" href="#plot">Plot</a></li>
-<li><a class="reference internal" href="#close">Close</a></li>
-<li><a class="reference internal" href="#abort">Abort</a></li>
-<li><a class="reference internal" href="#stat">Stat</a></li>
-<li><a class="reference internal" href="#read-dir">Read Dir</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-saxsdog-network-protocol">The Saxsdog Network Protocol</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SAXSProtocol.html" class="btn btn-neutral float-right" title="The Saxsdog Server"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Statistics.html" class="btn btn-neutral" title="Statistics"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="Statistics.html"
-                        title="previous chapter">Statistics</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="SAXSProtocol.html"
-                        title="next chapter">The Saxsdog Server</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/Server.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  2014, Tu Graz, Christian Meisenbichler, Heinz Amenitsch.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="SAXSProtocol.html" title="The Saxsdog Server"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="Statistics.html" title="Statistics"
-             >previous</a> |</li>
-        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Christian Meisenbichler.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

@@ -27,7 +27,8 @@ and adds them to a SAXS.calibration configuration file. (:ref:`root`)
  
 .. command-output:: saxsconverter  --help
 
-If there is a  target file   and it is a valid :ref:`root`, the parsed values are added or updated in place.
+If there is a  target file   and it is a valid :ref:`root`, the parsed values are added or 
+updated in place.
 
 .. _plotchi:
 
@@ -41,17 +42,18 @@ The tool "plotchi"  plots a list of ".chi"-files:
 Saxsdmerge
 ~~~~~~~~~~
 
-This tool adresses a very specific problem only aplicable under our groups needs.
+This tool adresses a very specific problem only applicable under our groups needs.
 
 .. command-output:: saxsdmerge   --help 
 
-What it does is the following: It merges the two logfiles
-by interpolating the 1 sec interval dataloger at the shutter event times. 
+What it does is the following: It merges the two log files
+by interpolating the missing data in the joined table of the the 1 sec interval data logger 
+and the shutter log. 
 The interpolation method takes the closest previous entry. The two logfiles are presumed 
 to have the same clock. This data is then merged with the data 
-extracted from the image headers and written to a ouput file as a Table.
-As the image timestaps are from a different clock which might have a significant 
+extracted from the image headers and written to a output file as a Table.
+As the image time stamps are from a different clock which might have a significant 
 offset, the ``-1`` and ``-t`` options allow for dealing with that. 
-In order to check if the time syncronisation is reasonable, the tool displays a 
+In order to check if the time synchronization is reasonable, the tool displays a 
 graph with the shutter times and the exposure times from the images.
  

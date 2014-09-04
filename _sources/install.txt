@@ -19,7 +19,7 @@ For Windows, use the Anaconda Python distribution which includes pip.
 The code can be obtained on github: https://github.com/ChristianMeisenbichler/SAXS where you would
 also find a "Download Zip" button.
 After unpacking or cloning with git you end up with a directory called "SAXS" containing the files. 
-Go there, and type into the commad line:
+Go there, and type into the command line:
 
 .. code::
 

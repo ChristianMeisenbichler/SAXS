@@ -57,25 +57,25 @@ of memory, as every pixel is counted only once, or, as we will see, about once.
 
 	The vector :math:`\mathbf c` displayed as image.
 	
-Figure :ref:`CircleNoAA` Scows the data of such a matrix column.
+Figure :ref:`CircleNoAA` Shows the data of such a matrix column.
  
-Oversampling
+Over sampling
 ------------
 
 .. _Circle:
 
 .. figure:: ring.*
 	
-	Ring with antialiasing / oversampling.
+	Ring with anti aliasing / over sampling.
 	
 A pixel might lie on the border of two radial intervals, making it 
 unclear to which one it should be added. By only choosing the nearest 
 one, one may get artifacts in the resulting curve especially when only few pixels contribute.
 So, how could we calculate to which fraction a pixel should account to one radial interval?
 
-The idea here is to use an algorithm comparable to antialiasing in computer graphics. 
-We will divide a much larger picture into the radial intervals and downsample it to the real pixels. 
+The idea here is to use an algorithm comparable to anti aliasing in computer graphics. 
+We will divide a much larger picture into the radial intervals and down sample it to the real pixels. 
 Which results in nicely balanced factors for the border pixels that add 
 up nicely over joining  intervals such that the intensity is conserved. If one looks closer at image :ref:`Circle` ,
-one sees that the ring has soft edges. Quite as it would have through antialiasing.
+one sees that the ring has soft edges. Quite as it would have through anti aliasing.
    

@@ -58,7 +58,7 @@ The angle :math:`\alpha` is therefore:
 .. math::
    \alpha=\arcsin(\sin(\tau)\sin(\phi))
    
-in python code this is :py:func:`SAXS.calc_theta`:
+in Python code this is :py:func:`SAXS.calc_theta`:
 
 .. code::
 
@@ -76,7 +76,8 @@ unique integer labels for all the pixels. This labels are the index of the radia
 Tilt Angle Correction Test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To check if the tilt angle correction is working, lets create some fake calibration data, with the following peaks in the diffraction curve:
+To check if the tilt angle correction is working, lets create some fake calibration data, with the following peaks 
+in the diffraction curve:
 
 .. plot::
    

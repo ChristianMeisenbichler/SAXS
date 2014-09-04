@@ -1,56 +1,130 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The Geometry &mdash; SAXS 0.3.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html" />
-    <link rel="up" title="The Technology" href="TheTechnology.html" />
-    <link rel="next" title="Polarization Correction" href="PolCorr.html" />
-    <link rel="prev" title="Integration as Matrix-Vector Multiplication" href="MatrixMulti.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="PolCorr.html" title="Polarization Correction"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="MatrixMulti.html" title="Integration as Matrix-Vector Multiplication"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li>
-          <li><a href="TheTechnology.html" accesskey="U">The Technology</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Geometry &mdash; SAXS 0.3.0 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html"/>
+        <link rel="up" title="The Technology" href="TheTechnology.html"/>
+        <link rel="next" title="Polarization Correction" href="PolCorr.html"/>
+        <link rel="prev" title="Integration as Matrix-Vector Multiplication" href="MatrixMulti.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> SAXS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TheTools.html">The Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#the-saxsdog">The Saxsdog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#the-converter">The Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#plotchi">Plotchi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#saxsdmerge">Saxsdmerge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SAXSSchemaDoc.html">The Calibration File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SAXSSchemaDoc.html#calibration-file-reference">Calibration file Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="TheTechnology.html">The Technology</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MatrixMulti.html">Integration as Matrix-Vector Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MatrixMulti.html#over-sampling">Over sampling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">The Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PolCorr.html">Polarization Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fit2d.html">Compare With Fit2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConstantImage.html">Integrating a Constant Image With Masked Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Statistics.html">Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Server.html">The Saxsdog Network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxsnetwork-configuration">The SAXSNetwork configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxsdog-server">The Saxsdog Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxs-leash">The Saxs Leash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#saxs-leash-commandline">Saxs Leash Commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxsdog-network-protocol">The Saxsdog Network Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SAXSapi.html">SAXS Module API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SAXS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="TheTechnology.html">The Technology</a> &raquo;</li>
+      
+    <li>The Geometry</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/Geometry.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
   <div class="section" id="the-geometry">
 <span id="geometry"></span><h1>The Geometry<a class="headerlink" href="#the-geometry" title="Permalink to this headline">¶</a></h1>
@@ -85,7 +159,7 @@ The slope <span class="math">\(s\)</span> derived from  <span class="math">\(\ta
 <p>The angle <span class="math">\(\alpha\)</span> is therefore:</p>
 <div class="math">
 \[\alpha=\arcsin(\sin(\tau)\sin(\phi))\]</div>
-<p>in python code this is <a class="reference internal" href="SAXSapi.html#SAXS.calc_theta" title="SAXS.calc_theta"><tt class="xref py py-func docutils literal"><span class="pre">SAXS.calc_theta()</span></tt></a>:</p>
+<p>in Python code this is <a class="reference internal" href="SAXSapi.html#SAXS.calc_theta" title="SAXS.calc_theta"><tt class="xref py py-func docutils literal"><span class="pre">SAXS.calc_theta()</span></tt></a>:</p>
 <div class="code highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">calc_theta</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">tilt</span><span class="p">,</span><span class="n">tiltdir</span><span class="p">):</span>
    <span class="n">alpha</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tilt</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">+</span><span class="n">tiltdir</span><span class="p">))</span>
    <span class="n">lsquared</span><span class="o">=</span><span class="n">d</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">alpha</span><span class="p">)</span>
@@ -97,7 +171,8 @@ This number then can be rescaled and rounded to the nearest integer in order to 
 unique integer labels for all the pixels. This labels are the index of the radial interval.</p>
 <div class="section" id="tilt-angle-correction-test">
 <h2>Tilt Angle Correction Test<a class="headerlink" href="#tilt-angle-correction-test" title="Permalink to this headline">¶</a></h2>
-<p>To check if the tilt angle correction is working, lets create some fake calibration data, with the following peaks in the diffraction curve:</p>
+<p>To check if the tilt angle correction is working, lets create some fake calibration data, with the following peaks
+in the diffraction curve:</p>
 <p>(<a class="reference external" href=".//Geometry-1.py">Source code</a>, <a class="reference external" href=".//Geometry-1.png">png</a>, <a class="reference external" href=".//Geometry-1.hires.png">hires.png</a>, <a class="reference external" href=".//Geometry-1.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="_images/Geometry-1.png" src="_images/Geometry-1.png" />
@@ -153,65 +228,68 @@ INFO: Estimated coordinate radial position error (X pixels) =  0.4149114E-01
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">The Geometry</a><ul>
-<li><a class="reference internal" href="#tilt-angle-correction-test">Tilt Angle Correction Test</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PolCorr.html" class="btn btn-neutral float-right" title="Polarization Correction"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="MatrixMulti.html" class="btn btn-neutral" title="Integration as Matrix-Vector Multiplication"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="MatrixMulti.html"
-                        title="previous chapter">Integration as Matrix-Vector Multiplication</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="PolCorr.html"
-                        title="next chapter">Polarization Correction</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/Geometry.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  2014, Tu Graz, Christian Meisenbichler, Heinz Amenitsch.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="PolCorr.html" title="Polarization Correction"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="MatrixMulti.html" title="Integration as Matrix-Vector Multiplication"
-             >previous</a> |</li>
-        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li>
-          <li><a href="TheTechnology.html" >The Technology</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Christian Meisenbichler.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

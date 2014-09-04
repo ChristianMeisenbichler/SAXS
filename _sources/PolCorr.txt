@@ -69,5 +69,5 @@ Just for checking: integrating a picture with only ones gives something differen
    plt.plot(r[0][nonzero],r[1][nonzero])
    plt.title(r"Integration of Picture With Constant Value 1")
 
-This are the wiggles that come from the polarisation corection pattern
+This are the wiggles that come from the polarization correction pattern
    

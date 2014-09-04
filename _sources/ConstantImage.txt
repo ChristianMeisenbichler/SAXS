@@ -4,7 +4,7 @@ Integrating a Constant Image With Masked Values
 -----------------------------------------------
 
 This test shows that nothing wrong happens at mask borders. 
-For thos we want to integrate an image that is one everywhere except for the masked regions
+For those we want to integrate an image that is one everywhere except for the masked regions
 
 We use the following calibration without Polarization correction and mask:
 
@@ -26,7 +26,7 @@ The image we are going to integrate is exactly the array the :py:func:`SAXS.open
    plt.colorbar()
    misc.imsave("mask.tif",img)
    
-The result is constant 1 (wher the intensity is not 0), save 2e-12.
+The result is constant 1 (where the intensity is not 0), save 2e-12.
 
 .. plot::
 
@@ -48,7 +48,7 @@ Doing the same with Fit2d,
    :ellipsis: 10
 
 results in something similar, just with less precision, about 10e-7. 
-Probably because of single precission arithmetics.
+Probably because of single precision arithmetics.
 
 .. plot::
 

@@ -1,56 +1,125 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Title &mdash; SAXS 0.3.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html" />
-    <link rel="up" title="The Calibration File" href="SAXSSchemaDoc.html" />
-    <link rel="next" title="The Technology" href="TheTechnology.html" />
-    <link rel="prev" title="The Calibration File" href="SAXSSchemaDoc.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="TheTechnology.html" title="The Technology"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="SAXSSchemaDoc.html" title="The Calibration File"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li>
-          <li><a href="SAXSSchemaDoc.html" accesskey="U">The Calibration File</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Title &mdash; SAXS 0.3.0 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> SAXS</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TheTools.html">The Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#the-saxsdog">The Saxsdog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#the-converter">The Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#plotchi">Plotchi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheTools.html#saxsdmerge">Saxsdmerge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SAXSSchemaDoc.html">The Calibration File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SAXSSchemaDoc.html#calibration-file-reference">Calibration file Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TheTechnology.html">The Technology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="MatrixMulti.html">Integration as Matrix-Vector Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MatrixMulti.html#over-sampling">Over sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Geometry.html">The Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PolCorr.html">Polarization Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fit2d.html">Compare With Fit2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConstantImage.html">Integrating a Constant Image With Masked Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Statistics.html">Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Server.html">The Saxsdog Network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxsnetwork-configuration">The SAXSNetwork configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxsdog-server">The Saxsdog Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxs-leash">The Saxs Leash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#saxs-leash-commandline">Saxs Leash Commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html#the-saxsdog-network-protocol">The Saxsdog Network Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SAXSapi.html">SAXS Module API</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SAXS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Title</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/SAXSSchema.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
   <style> .red {color:red} </style><blockquote id="root-required">
 <div>The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</div></blockquote>
@@ -62,14 +131,14 @@
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">object</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="#title"><em>Title</em></a>, <a class="reference internal" href="#tilt"><em>Tilt</em></a><span class="red">*</span>, <a class="reference internal" href="#beamcenter"><em>BeamCenter</em></a><span class="red">*</span>, <a class="reference internal" href="#dedectordistancemm"><em>DedectorDistanceMM</em></a><span class="red">*</span>, <a class="reference internal" href="#imagesize"><em>Imagesize</em></a><span class="red">*</span>, <a class="reference internal" href="#maskfile"><em>MaskFile</em></a><span class="red">*</span>, <a class="reference internal" href="#oversampling"><em>Oversampling</em></a><span class="red">*</span>, <a class="reference internal" href="#pixelsizemicrom"><em>PixelSizeMicroM</em></a><span class="red">*</span>, <a class="reference internal" href="#pixelperradialelement"><em>PixelPerRadialElement</em></a><span class="red">*</span>, <a class="reference internal" href="#wavelength"><em>Wavelength</em></a><span class="red">*</span>, <a class="reference internal" href="#polarizationcorrection"><em>PolarizationCorrection</em></a></p>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="SAXSSchemaDoc.html#title"><em>Title</em></a>, <a class="reference internal" href="SAXSSchemaDoc.html#tilt"><em>Tilt</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#beamcenter"><em>BeamCenter</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#dedectordistancemm"><em>DedectorDistanceMM</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#imagesize"><em>Imagesize</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#maskfile"><em>MaskFile</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#oversampling"><em>Oversampling</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#pixelsizemicrom"><em>PixelSizeMicroM</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#pixelperradialelement"><em>PixelPerRadialElement</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#wavelength"><em>Wavelength</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#polarizationcorrection"><em>PolarizationCorrection</em></a></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body"><p class="first">True</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em></li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a></li>
 </ul>
 </td>
 </tr>
@@ -113,7 +182,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#title"><em>Title</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#title"><em>Title</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -134,14 +203,14 @@
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">object</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="#tiltrotdeg"><em>TiltRotDeg</em></a><span class="red">*</span>, <a class="reference internal" href="#tiltangledeg"><em>TiltAngleDeg</em></a><span class="red">*</span></p>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="SAXSSchemaDoc.html#tiltrotdeg"><em>TiltRotDeg</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#tiltangledeg"><em>TiltAngleDeg</em></a><span class="red">*</span></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body"><p class="first">True</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#tilt"><em>Tilt</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#tilt"><em>Tilt</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -169,7 +238,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#tilt"><em>Tilt</em></a>&#8216;][&#8216;<a class="reference internal" href="#tiltrotdeg"><em>TiltRotDeg</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#tilt"><em>Tilt</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#tiltrotdeg"><em>TiltRotDeg</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -197,7 +266,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#tilt"><em>Tilt</em></a>&#8216;][&#8216;<a class="reference internal" href="#tiltangledeg"><em>TiltAngleDeg</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#tilt"><em>Tilt</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#tiltangledeg"><em>TiltAngleDeg</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -225,7 +294,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#beamcenter"><em>BeamCenter</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#beamcenter"><em>BeamCenter</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -253,7 +322,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#dedectordistancemm"><em>DedectorDistanceMM</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#dedectordistancemm"><em>DedectorDistanceMM</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -281,7 +350,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#imagesize"><em>Imagesize</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#imagesize"><em>Imagesize</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -309,7 +378,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#maskfile"><em>MaskFile</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#maskfile"><em>MaskFile</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -337,7 +406,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#oversampling"><em>Oversampling</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#oversampling"><em>Oversampling</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -365,7 +434,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#pixelsizemicrom"><em>PixelSizeMicroM</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#pixelsizemicrom"><em>PixelSizeMicroM</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -378,7 +447,7 @@
 </div>
 <div class="section" id="pixelperradialelement">
 <span id="id11"></span><h1>PixelPerRadialElement<a class="headerlink" href="#pixelperradialelement" title="Permalink to this headline">¶</a></h1>
-<p>Expresses the width of a radial step in terms of pixels. &#8216;1&#8217; means <span class="math">\(\delta R\approx 1\)</span> <a class="reference internal" href="#pixelsizemicrom"><em>PixelSizeMicroM</em></a>.</p>
+<p>Expresses the width of a radial step in terms of pixels. &#8216;1&#8217; means <span class="math">\(\delta R\approx 1\)</span> <a class="reference internal" href="SAXSSchemaDoc.html#pixelsizemicrom"><em>PixelSizeMicroM</em></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -393,7 +462,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#pixelperradialelement"><em>PixelPerRadialElement</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#pixelperradialelement"><em>PixelPerRadialElement</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -421,7 +490,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#wavelength"><em>Wavelength</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#wavelength"><em>Wavelength</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -442,7 +511,7 @@
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">object</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="#fraction"><em>Fraction</em></a><span class="red">*</span>, <a class="reference internal" href="#angle"><em>Angle</em></a><span class="red">*</span></p>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="SAXSSchemaDoc.html#fraction"><em>Fraction</em></a><span class="red">*</span>, <a class="reference internal" href="SAXSSchemaDoc.html#angle"><em>Angle</em></a><span class="red">*</span></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
@@ -452,7 +521,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#polarizationcorrection"><em>PolarizationCorrection</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#polarizationcorrection"><em>PolarizationCorrection</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -465,7 +534,7 @@
 </div>
 <div class="section" id="fraction">
 <span id="id14"></span><h1>Fraction<a class="headerlink" href="#fraction" title="Permalink to this headline">¶</a></h1>
-<p>Fraction of light polarized in the given (<a class="reference internal" href="#angle"><em>Angle</em></a>) direction.</p>
+<p>Fraction of light polarized in the given (<a class="reference internal" href="SAXSSchemaDoc.html#angle"><em>Angle</em></a>) direction.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -480,7 +549,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#polarizationcorrection"><em>PolarizationCorrection</em></a>&#8216;][&#8216;<a class="reference internal" href="#fraction"><em>Fraction</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#polarizationcorrection"><em>PolarizationCorrection</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#fraction"><em>Fraction</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -508,7 +577,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="#polarizationcorrection"><em>PolarizationCorrection</em></a>&#8216;][&#8216;<a class="reference internal" href="#angle"><em>Angle</em></a>&#8216;]</li>
+<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#polarizationcorrection"><em>PolarizationCorrection</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSSchemaDoc.html#angle"><em>Angle</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -522,76 +591,59 @@
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Title</a></li>
-<li><a class="reference internal" href="#tilt">Tilt</a></li>
-<li><a class="reference internal" href="#tiltrotdeg">TiltRotDeg</a></li>
-<li><a class="reference internal" href="#tiltangledeg">TiltAngleDeg</a></li>
-<li><a class="reference internal" href="#beamcenter">BeamCenter</a></li>
-<li><a class="reference internal" href="#dedectordistancemm">DedectorDistanceMM</a></li>
-<li><a class="reference internal" href="#imagesize">Imagesize</a></li>
-<li><a class="reference internal" href="#maskfile">MaskFile</a></li>
-<li><a class="reference internal" href="#oversampling">Oversampling</a></li>
-<li><a class="reference internal" href="#pixelsizemicrom">PixelSizeMicroM</a></li>
-<li><a class="reference internal" href="#pixelperradialelement">PixelPerRadialElement</a></li>
-<li><a class="reference internal" href="#wavelength">Wavelength</a></li>
-<li><a class="reference internal" href="#polarizationcorrection">PolarizationCorrection</a></li>
-<li><a class="reference internal" href="#fraction">Fraction</a></li>
-<li><a class="reference internal" href="#angle">Angle</a></li>
-</ul>
+          <footer>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="SAXSSchemaDoc.html"
-                        title="previous chapter">The Calibration File</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="TheTechnology.html"
-                        title="next chapter">The Technology</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/SAXSSchema.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  2014, Tu Graz, Christian Meisenbichler, Heinz Amenitsch.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="TheTechnology.html" title="The Technology"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="SAXSSchemaDoc.html" title="The Calibration File"
-             >previous</a> |</li>
-        <li><a href="index.html">SAXS 0.3.0 documentation</a> &raquo;</li>
-          <li><a href="SAXSSchemaDoc.html" >The Calibration File</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Christian Meisenbichler.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

@@ -2,7 +2,8 @@
 Compare With Fit2d
 ------------------
 
-The program fit2d, which this package aims to partly replace, is the standard, so we better include a comparison plot here:
+The program fit2d, which this package aims to partly replace, is the standard, so we better include a 
+comparison plot here:
 
 .. plot::
 
