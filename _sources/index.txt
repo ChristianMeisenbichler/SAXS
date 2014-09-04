@@ -8,6 +8,8 @@ SAXS's documentation!
 =====================
 
 
+.. image::  tugwhite.svg
+
  
 The SAXS Python package implements analysis tools for Small Angle X-Ray Scattering 
 (SAXS) data analysis.
