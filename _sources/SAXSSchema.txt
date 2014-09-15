@@ -41,10 +41,10 @@ Example JSON:
       "Oversampling": 3,
       "Wavelength": 1.54,
       "BeamCenter": [
-        808.37,
-        387.772
+        800.0,
+        400.0
       ],
-      "DedectorDistanceMM": 1031.657
+      "DedectorDistanceMM": 1000.0
     }
 
 .. _Title:
@@ -147,7 +147,7 @@ Gives the beam center in pixel coorinates.
 :Required:
   True
 :Default:
-  [808.37, 387.772]
+  [800.0, 400.0]
 :JSON Path:
   * :ref:`# <root>` [':ref:`BeamCenter <BeamCenter>`']
 
@@ -155,7 +155,7 @@ Example JSON:
 
 .. code:: json
 
-    {"BeamCenter": [808.37,387.772]}
+    {"BeamCenter": [800.0,400.0]}
 
 .. _DedectorDistanceMM:
 
@@ -170,7 +170,7 @@ Distance between diffraction center and sensor.
 :Required:
   True
 :Default:
-  1031.657
+  1000.0
 :JSON Path:
   * :ref:`# <root>` [':ref:`DedectorDistanceMM <DedectorDistanceMM>`']
 
@@ -178,7 +178,7 @@ Example JSON:
 
 .. code:: json
 
-    {"DedectorDistanceMM": 1031.657}
+    {"DedectorDistanceMM": 1000.0}
 
 .. _Imagesize:
 

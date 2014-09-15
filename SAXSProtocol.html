@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Saxsdog Server &mdash; SAXS 0.3.0 documentation</title>
+  <title>The Saxsdog Server &mdash; SAXS 1.0.1 alpha documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="SAXS 1.0.1 alpha documentation" href="index.html"/>
         <link rel="up" title="The Saxsdog Network" href="Server.html"/>
         <link rel="next" title="SAXS Module API" href="SAXSapi.html"/>
         <link rel="prev" title="The Saxsdog Network" href="Server.html"/> 
@@ -167,12 +167,12 @@ only send this event, when the file is completly written to the file system.</p>
                       <span class="n">help</span><span class="o">=</span><span class="s">&quot;Directory to monitor&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s">&quot;dir&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
     <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
     
- 
+    
     
     <span class="n">context</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
     <span class="n">socket</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">PUB</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">port</span><span class="o">==</span><span class="s">&quot;&quot;</span><span class="p">:</span>
-        <span class="n">conf</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&quot;~&quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="s">&quot;.saxdognetwork&quot;</span><span class="p">)))</span> 
+        <span class="n">conf</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&quot;~&quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="s">&quot;.saxsdognetwork&quot;</span><span class="p">)))</span> 
         <span class="n">port</span><span class="o">=</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;Feeder&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">port</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">port</span>
@@ -180,7 +180,11 @@ only send this event, when the file is completly written to the file system.</p>
     <span class="n">socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&quot;tcp://*:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
     
     <span class="n">fileslist</span><span class="o">=</span><span class="p">[]</span>
-    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">dir</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">dir</span><span class="o">==</span><span class="s">&quot;.&quot;</span><span class="p">:</span>
+        <span class="n">dirtosearch</span> <span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dirtosearch</span> <span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">dir</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">dirtosearch</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;tif&#39;</span><span class="p">):</span>
                         <span class="n">fileslist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
@@ -189,9 +193,8 @@ only send this event, when the file is completly written to the file system.</p>
        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">fileslist</span><span class="p">:</span>
             <span class="n">messageobj</span><span class="p">[</span><span class="s">&#39;argument&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">file</span>
             <span class="n">message</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">messageobj</span><span class="p">)</span>
-            <span class="k">print</span> <span class="n">message</span>
             <span class="n">socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mo">01</span><span class="p">)</span>
                         
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
@@ -946,7 +949,7 @@ During the processing, it shows a graph of one of the current images.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'1.0.1 alpha',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

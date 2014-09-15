@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Tools &mdash; SAXS 0.3.0 documentation</title>
+  <title>The Tools &mdash; SAXS 1.0.1 alpha documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="SAXS 1.0.1 alpha documentation" href="index.html"/>
         <link rel="next" title="The Calibration File" href="SAXSSchemaDoc.html"/>
         <link rel="prev" title="Install" href="install.html"/> 
 
@@ -131,30 +131,18 @@
 It can use multiple threads and watch the file system for changes.</p>
 <p>For Help on the usage type:</p>
 <div class="highlight-text"><div class="highlight"><pre>$ saxsdog --help
-Usage: saxsdog [options] directory/to/watch
-
-Options:
-  -h, --help            Show this help message and exit.
-  -c FILE, --calibration=FILE
-                        Path to calibration file (JSON).
-  -t THREADS, --threads=THREADS
-                        Number of concurrent threads.
-  -m, --plotmonitor     Show a live updating plot window.
-  -w, --watch           Watch directory for changes, using file system events
-                        recursively for all sub directories.
-  -r, --resume          Skip files that are already converted.
-  -o OUTDIR, --out=OUTDIR
-                        Specify output directory. Default is &#39;./out&#39;.
-  -i, --inplace         Files are written, in place, in the directory of the
-                        image.
-  -s, --svg             Write plot to svg file.
-  -p, --png             Write png of original.
-  -P, --profile         Make a time Profile and print it.
-  -S, --silent          Less output.
-  -n, --nowalk          Don&#39;t scan for files already there, only watch file
-                        system if -w flag is given.
-  -D, --walkdirinthreads
-                        Search all directories in parallel process.
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/saxsdog&quot;, line 9, in &lt;module&gt;
+    load_entry_point(&#39;SAXS==0&#39;, &#39;console_scripts&#39;, &#39;saxsdog&#39;)()
+  File &quot;/usr/local/lib/python2.7/dist-packages/SAXS-0-py2.7.egg/SAXS/saxsdoglib.py&quot;, line 76, in saxsdog
+    (options, args)=saxsdogparseopt()
+  File &quot;/usr/local/lib/python2.7/dist-packages/SAXS-0-py2.7.egg/SAXS/saxsdoglib.py&quot;, line 43, in saxsdogparseopt
+    help=&quot;Servermode.&quot;)
+  File &quot;/usr/lib/python2.7/optparse.py&quot;, line 1021, in add_option
+    self._check_conflict(option)
+  File &quot;/usr/lib/python2.7/optparse.py&quot;, line 996, in _check_conflict
+    option)
+optparse.OptionConflictError: option -S/--servermode: conflicting option string(s): -S
 </pre></div>
 </div>
 <p>The calibration file must be a valid <em class="xref std std-ref">root</em></p>
@@ -279,7 +267,7 @@ graph with the shutter times and the exposure times from the images.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'1.0.1 alpha',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

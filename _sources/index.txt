@@ -8,7 +8,7 @@ SAXS's documentation!
 =====================
 
 
-.. image::  tugwhite.svg
+.. image::  tugwhite.png
 
  
 The SAXS Python package implements analysis tools for Small Angle X-Ray Scattering 
@@ -52,4 +52,4 @@ and :ref:`converter`
  
 
 
-.. image::  tugwhite.svg
+.. image::  tugwhite.png

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Saxsdog Network &mdash; SAXS 0.3.0 documentation</title>
+  <title>The Saxsdog Network &mdash; SAXS 1.0.1 alpha documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="SAXS 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="SAXS 1.0.1 alpha documentation" href="index.html"/>
         <link rel="next" title="The Saxsdog Server" href="SAXSProtocol.html"/>
         <link rel="prev" title="Statistics" href="Statistics.html"/> 
 
@@ -157,7 +157,7 @@ The time stamp is checked if it lies within 900 seconds of the servers time.</p>
 <p>The Saxdog Server is the program that is started on the processing computer (node).
 It may subscribe to a &#8220;new file&#8221; event service.</p>
 <div class="highlight-text"><div class="highlight"><pre>$ saxsdogserver --help
-Usage: saxsdogserver [options]
+Usage: saxsdogserver [options] basedir
 
 Options:
   -h, --help            show this help message and exit
@@ -178,14 +178,14 @@ Options:
 </div>
 <div class="section" id="the-saxs-leash">
 <h2>The Saxs Leash<a class="headerlink" href="#the-saxs-leash" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/screenshot.png" src="_images/screenshot.png" />
 <p>The Leash Program is a GUI to load calibrations into the Saxdog Server and monitor the processing of the data.
 It provides a calibration editor, as mask preview and basic data import from <em class="xref std std-ref">saxsconverter</em>.</p>
 <p>The main window has 3 tab cards. The first is for setting up the server,
 the second to review the currently processed data and the third for basic statistics. The command to launch it is.</p>
-<div class="highlight-python"><div class="highlight"><pre>$ Leash
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">leash</span>
 </pre></div>
 </div>
-<img alt="_images/screenshot_id0.png" src="_images/screenshot_id0.png" />
 </div>
 <div class="section" id="saxs-leash-commandline">
 <h2>Saxs Leash Commandline<a class="headerlink" href="#saxs-leash-commandline" title="Permalink to this headline">¶</a></h2>
@@ -349,7 +349,7 @@ This is useful to reprocess pictures.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'1.0.1 alpha',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
