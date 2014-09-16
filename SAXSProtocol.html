@@ -158,6 +158,9 @@ only send this event, when the file is completly written to the file system.</p>
 <span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span>
 
 <span class="k">def</span> <span class="nf">startfeeder</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulator for new file anounciation service. For development and testing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
     <span class="n">usage</span> <span class="o">=</span> <span class="s">&quot;usage: %prog [options]  &quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">(</span><span class="n">usage</span><span class="p">)</span>
@@ -376,9 +379,15 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="request-schema">
-<h1>Request Schema<a class="headerlink" href="#request-schema" title="Permalink to this headline">¶</a></h1>
-<style> .red {color:red} </style><blockquote id="root-required">
-<div>The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</div></blockquote>
+<span id="reqroot"></span><h1>Request Schema<a class="headerlink" href="#request-schema" title="Permalink to this headline">¶</a></h1>
+<style> .red {color:red} </style><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">.. _required:</th><td class="field-body">The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</td>
+</tr>
+</tbody>
+</table>
 <p>Schema for requests from Saxs Leash to Saxs Server</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -394,7 +403,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a></li>
+<li><a class="reference internal" href="#reqroot"><em>#</em></a></li>
 </ul>
 </td>
 </tr>
@@ -420,7 +429,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#command"><em>command</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#reqroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#command"><em>command</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -440,14 +449,14 @@ During the processing, it shows a graph of one of the current images.</p>
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">object</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>, <a class="reference internal" href="#calibration"><em>calibration</em></a></p>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><em class="xref std std-ref">directory</em>, <a class="reference internal" href="#calibration"><em>calibration</em></a></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#reqroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -465,21 +474,24 @@ During the processing, it shows a graph of one of the current images.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">string</p>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">array() items: string</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>&#8216;]</li>
+<tr class="field-odd field"><th class="field-name">Default:</th><td class="field-body"><p class="first">[u&#8217;.&#8217;, u&#8217;&#8216;, u&#8217;&#8216;]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#reqroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;][&#8216;<em class="xref std std-ref">directory</em>&#8216;]</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Example JSON:</p>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
@@ -500,7 +512,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="#calibration"><em>calibration</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#reqroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="#calibration"><em>calibration</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -525,7 +537,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#sign"><em>sign</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#reqroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#sign"><em>sign</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -550,7 +562,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#time"><em>time</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#reqroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#time"><em>time</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -563,9 +575,15 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="response-schema">
-<h1>Response Schema<a class="headerlink" href="#response-schema" title="Permalink to this headline">¶</a></h1>
-<style> .red {color:red} </style><blockquote id="id7">
-<div>The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</div></blockquote>
+<span id="resroot"></span><h1>Response Schema<a class="headerlink" href="#response-schema" title="Permalink to this headline">¶</a></h1>
+<style> .red {color:red} </style><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">.. _required:</th><td class="field-body">The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</td>
+</tr>
+</tbody>
+</table>
 <p>Schema for requests from Saxs Leash to Saxs Server</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -581,7 +599,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a></li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a></li>
 </ul>
 </td>
 </tr>
@@ -592,7 +610,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </pre></div>
 </div>
 <div class="section" id="result">
-<span id="id8"></span><h2>result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -604,7 +622,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#result"><em>result</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#result"><em>result</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -616,7 +634,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="data">
-<span id="id9"></span><h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -624,14 +642,14 @@ During the processing, it shows a graph of one of the current images.</p>
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">object</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="#cal"><em>cal</em></a>, <a class="reference internal" href="#id11"><em>Error</em></a>, <a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>, <a class="reference internal" href="#id15"><em>stat</em></a>, <a class="reference internal" href="#filename"><em>filename</em></a>, <a class="reference internal" href="#array"><em>array</em></a></p>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="#cal"><em>cal</em></a>, <a class="reference internal" href="#id10"><em>Error</em></a>, <em class="xref std std-ref">directory</em>, <a class="reference internal" href="#mask"><em>mask</em></a>, <a class="reference internal" href="#id15"><em>stat</em></a>, <a class="reference internal" href="#filename"><em>filename</em></a>, <a class="reference internal" href="#array"><em>array</em></a></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body"><p class="first">True</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -643,7 +661,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </div>
 </div>
 <div class="section" id="cal">
-<span id="id10"></span><h2>cal<a class="headerlink" href="#cal" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>cal<a class="headerlink" href="#cal" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -655,7 +673,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#cal"><em>cal</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#cal"><em>cal</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -666,8 +684,8 @@ During the processing, it shows a graph of one of the current images.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<span id="id12"></span><h2>Error<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<span id="id11"></span><h2>Error<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -679,7 +697,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id11"><em>Error</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id10"><em>Error</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -690,27 +708,55 @@ During the processing, it shows a graph of one of the current images.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id13">
-<span id="id14"></span><h2>directory<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<span id="id13"></span><h2>directory<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>Directory this queue is going to use. New files in other directories are going to be ignored.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">string</p>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">array() items: string</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>&#8216;]</li>
+<tr class="field-odd field"><th class="field-name">Default:</th><td class="field-body"><p class="first">[u&#8217;.&#8217;, u&#8217;&#8216;, u&#8217;&#8216;]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<em class="xref std std-ref">directory</em>&#8216;]</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Example JSON:</p>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mask">
+<span id="id14"></span><h2>mask<a class="headerlink" href="#mask" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">type:</th><td class="field-body"><p class="first">object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#mask"><em>mask</em></a>&#8216;]</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;mask&quot;</span><span class="p">:</span> <span class="p">{}}</span>
 </pre></div>
 </div>
 </div>
@@ -730,7 +776,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -754,7 +800,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#queue-length"><em>queue length</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#queue-length"><em>queue length</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -778,7 +824,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#images-processed"><em>images processed</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#images-processed"><em>images processed</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -802,7 +848,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#time-interval"><em>time interval</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#time-interval"><em>time interval</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -826,7 +872,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#frames-per-sec"><em>frames per sec</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#frames-per-sec"><em>frames per sec</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -850,7 +896,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#pics"><em>pics</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="#pics"><em>pics</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -874,7 +920,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#filename"><em>filename</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#filename"><em>filename</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -898,7 +944,7 @@ During the processing, it shows a graph of one of the current images.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#array"><em>array</em></a>&#8216;]</li>
+<li><a class="reference internal" href="#resroot"><em>#</em></a> [&#8216;<a class="reference internal" href="#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#array"><em>array</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>

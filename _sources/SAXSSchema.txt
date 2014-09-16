@@ -4,7 +4,7 @@
 
 .. role:: red
 
-.. _root:.. _required:
+:.. _required:
 
  The ':red:`*`' signifies a required Field.
 

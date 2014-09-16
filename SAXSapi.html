@@ -326,6 +326,30 @@ Fit2d info file to the JSON data used by the SAXS.callibration class.</p>
 <dt id="SAXS.Server">
 <em class="property">class </em><tt class="descclassname">SAXS.</tt><tt class="descname">Server</tt><big>(</big><em>conf</em><big>)</big><a class="headerlink" href="#SAXS.Server" title="Permalink to this definition">¶</a></dt>
 <dd><p>class to manage a saxsdog server</p>
+<dl class="method">
+<dt id="SAXS.Server.authenticate">
+<tt class="descname">authenticate</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#SAXS.Server.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>check signature of request</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SAXS.Server.commandhandler">
+<tt class="descname">commandhandler</tt><big>(</big><em>object</em>, <em>attachment</em><big>)</big><a class="headerlink" href="#SAXS.Server.commandhandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="SAXS.Server.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#SAXS.Server.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>start server loop</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="SAXS.Server.start_image_queue">
+<tt class="descname">start_image_queue</tt><big>(</big><em>object</em>, <em>attachment</em><big>)</big><a class="headerlink" href="#SAXS.Server.start_image_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>prepare new image queue
+start processing threads</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="function">

@@ -121,9 +121,7 @@
 </div>
           <div role="main">
             
-  <style> .red {color:red} </style><blockquote id="root-required">
-<div>The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</div></blockquote>
-<p>Schema for requests from Saxs Leash to Saxs Server</p>
+  <style> .red {color:red} </style><p>Schema for requests from Saxs Leash to Saxs Server</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -138,7 +136,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a></li>
+<li><em class="xref std std-ref">#</em></li>
 </ul>
 </td>
 </tr>
@@ -161,7 +159,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#result"><em>result</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#result"><em>result</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -181,14 +179,14 @@
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">object</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="SAXSProtocol.html#cal"><em>cal</em></a>, <a class="reference internal" href="SAXSProtocol.html#id11"><em>Error</em></a>, <a class="reference internal" href="#directory"><em>directory</em></a>, <a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>, <a class="reference internal" href="SAXSProtocol.html#filename"><em>filename</em></a>, <a class="reference internal" href="SAXSProtocol.html#array"><em>array</em></a></p>
+<tr class="field-even field"><th class="field-name">Contains:</th><td class="field-body"><p class="first"><a class="reference internal" href="SAXSProtocol.html#cal"><em>cal</em></a>, <a class="reference internal" href="SAXSProtocol.html#id11"><em>Error</em></a>, <a class="reference internal" href="#directory"><em>directory</em></a>, <a class="reference internal" href="SAXSProtocol.html#mask"><em>mask</em></a>, <a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>, <a class="reference internal" href="SAXSProtocol.html#filename"><em>filename</em></a>, <a class="reference internal" href="SAXSProtocol.html#array"><em>array</em></a></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Required:</th><td class="field-body"><p class="first">True</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -212,7 +210,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#cal"><em>cal</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#cal"><em>cal</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -236,7 +234,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id11"><em>Error</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id11"><em>Error</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -249,30 +247,58 @@
 </div>
 <div class="section" id="directory">
 <span id="id5"></span><h1>directory<a class="headerlink" href="#directory" title="Permalink to this headline">¶</a></h1>
+<p>Directory this queue is going to use. New files in other directories are going to be ignored.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">string</p>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">array() items: string</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#directory"><em>directory</em></a>&#8216;]</li>
+<tr class="field-odd field"><th class="field-name">Default:</th><td class="field-body"><p class="first">[u&#8217;.&#8217;, u&#8217;&#8216;, u&#8217;&#8216;]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="#directory"><em>directory</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Example JSON:</p>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mask">
+<span id="id6"></span><h1>mask<a class="headerlink" href="#mask" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">type:</th><td class="field-body"><p class="first">object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#mask"><em>mask</em></a>&#8216;]</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;mask&quot;</span><span class="p">:</span> <span class="p">{}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="stat">
-<span id="id6"></span><h1>stat<a class="headerlink" href="#stat" title="Permalink to this headline">¶</a></h1>
+<span id="id7"></span><h1>stat<a class="headerlink" href="#stat" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -287,7 +313,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -299,7 +325,7 @@
 </div>
 </div>
 <div class="section" id="queue-length">
-<span id="id7"></span><h1>queue length<a class="headerlink" href="#queue-length" title="Permalink to this headline">¶</a></h1>
+<span id="id8"></span><h1>queue length<a class="headerlink" href="#queue-length" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -311,7 +337,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#queue-length"><em>queue length</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#queue-length"><em>queue length</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -323,7 +349,7 @@
 </div>
 </div>
 <div class="section" id="images-processed">
-<span id="id8"></span><h1>images processed<a class="headerlink" href="#images-processed" title="Permalink to this headline">¶</a></h1>
+<span id="id9"></span><h1>images processed<a class="headerlink" href="#images-processed" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -335,7 +361,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#images-processed"><em>images processed</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#images-processed"><em>images processed</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -347,7 +373,7 @@
 </div>
 </div>
 <div class="section" id="time-interval">
-<span id="id9"></span><h1>time interval<a class="headerlink" href="#time-interval" title="Permalink to this headline">¶</a></h1>
+<span id="id10"></span><h1>time interval<a class="headerlink" href="#time-interval" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -359,7 +385,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#time-interval"><em>time interval</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#time-interval"><em>time interval</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -371,7 +397,7 @@
 </div>
 </div>
 <div class="section" id="frames-per-sec">
-<span id="id10"></span><h1>frames per sec<a class="headerlink" href="#frames-per-sec" title="Permalink to this headline">¶</a></h1>
+<span id="id11"></span><h1>frames per sec<a class="headerlink" href="#frames-per-sec" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -383,7 +409,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#frames-per-sec"><em>frames per sec</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#frames-per-sec"><em>frames per sec</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -395,7 +421,7 @@
 </div>
 </div>
 <div class="section" id="pics">
-<span id="id11"></span><h1>pics<a class="headerlink" href="#pics" title="Permalink to this headline">¶</a></h1>
+<span id="id12"></span><h1>pics<a class="headerlink" href="#pics" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -407,7 +433,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id15"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#pics"><em>pics</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#id16"><em>stat</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#pics"><em>pics</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -419,7 +445,7 @@
 </div>
 </div>
 <div class="section" id="filename">
-<span id="id12"></span><h1>filename<a class="headerlink" href="#filename" title="Permalink to this headline">¶</a></h1>
+<span id="id13"></span><h1>filename<a class="headerlink" href="#filename" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -431,7 +457,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#filename"><em>filename</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#filename"><em>filename</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -443,7 +469,7 @@
 </div>
 </div>
 <div class="section" id="array">
-<span id="id13"></span><h1>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h1>
+<span id="id14"></span><h1>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -455,7 +481,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#array"><em>array</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#data"><em>data</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#array"><em>array</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>

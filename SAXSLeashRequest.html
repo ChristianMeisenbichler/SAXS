@@ -121,9 +121,7 @@
 </div>
           <div role="main">
             
-  <style> .red {color:red} </style><blockquote id="root-required">
-<div>The &#8216;<span class="red">*</span>&#8216; signifies a required Field.</div></blockquote>
-<p>Schema for requests from Saxs Leash to Saxs Server</p>
+  <style> .red {color:red} </style><p>Schema for requests from Saxs Leash to Saxs Server</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -138,7 +136,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a></li>
+<li><em class="xref std std-ref">#</em></li>
 </ul>
 </td>
 </tr>
@@ -164,7 +162,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#command"><em>command</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#command"><em>command</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -191,7 +189,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -209,21 +207,24 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">string</p>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first">array() items: string</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Required:</th><td class="field-body"><p class="first">False</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>&#8216;]</li>
+<tr class="field-odd field"><th class="field-name">Default:</th><td class="field-body"><p class="first">[u&#8217;.&#8217;, u&#8217;&#8216;, u&#8217;&#8216;]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSLeashResult.html#directory"><em>directory</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Example JSON:</p>
-<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;directory&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
@@ -244,7 +245,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#calibration"><em>calibration</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#argument"><em>argument</em></a>&#8216;][&#8216;<a class="reference internal" href="SAXSProtocol.html#calibration"><em>calibration</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -269,7 +270,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#sign"><em>sign</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#sign"><em>sign</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
@@ -294,7 +295,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">JSON Path:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference internal" href="SAXSSchemaDoc.html#root"><em>#</em></a> [&#8216;<a class="reference internal" href="SAXSProtocol.html#time"><em>time</em></a>&#8216;]</li>
+<li><em class="xref std std-ref">#</em> [&#8216;<a class="reference internal" href="SAXSProtocol.html#time"><em>time</em></a>&#8216;]</li>
 </ul>
 </td>
 </tr>
