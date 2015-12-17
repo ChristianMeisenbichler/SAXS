@@ -141,7 +141,10 @@ class imagequeue:
             else:
                 imgTime=""            
             for calnum,cal in enumerate(self.cals):   
-                filename=basename+"_c"+cal.kind[0]+str(calnum)
+                if len(list(enumerate(self.cals)))==1:
+                    filename=basename
+                else:
+                    filename=basename+"_c"+cal.kind[0]+str(calnum)
                 chifilename=filename+".chi"
                 filelist[cal.kind+str(calnum)]=chifilename
                 if not self.options.resume or not os.path.isfile(chifilename):
@@ -276,7 +279,7 @@ class imagequeue:
     def timreport(self):
         tottime=time.time()-self.starttime
         count=self.allp.value
-        print count
+        #print count
         if count==0:
             print "We didn't do any pictures "
         else:

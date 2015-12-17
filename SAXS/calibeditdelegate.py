@@ -1,11 +1,11 @@
 from PyQt4 import  QtGui
 from PyQt4 import  uic
 from PyQt4 import  QtCore
- 
 import json,os
 import jsonschematreemodel as im
 from Leash import  initcommand
 import maskfileui
+from PyQt4.QtGui import QComboBox
 class calibEditDelegate(QtGui.QItemDelegate):
     def __init__(self,app,  parent=None):
         super(calibEditDelegate, self).__init__(parent)
@@ -195,11 +195,15 @@ class RemoteDirPicker(QtGui.QComboBox):
               diritem= parentitem.child(row,1)
               dirs.append(unicode(diritem.data( QtCore.Qt.DisplayRole).toString()))
           argu=["listdir", os.sep.join(dirs)]
-          result=json.loads(  initcommand(app.options,argu,app.netconf))
-
+          result=json.loads(initcommand(app.options,argu,app.netconf))
+          
+          self.setMaxCount(5000)
+          self.setMaxVisibleItems(5000)
           self.addItem(".")
           if 'dircontent' in result['data']:
-              for  dir in  result['data']['dircontent']:
+              for  dir in  sorted(result['data']['dircontent']):
                   if dir['isdir'] or showfiles :
                     self.addItem(dir['path'])
-   
+                    
+          
+                    

@@ -86,10 +86,6 @@ class slice():
         headerstr+="Intensity\n"
         headerstr+="   "+str(data.shape[0])+""
         np.savetxt(path, data, fmt='%.18e', delimiter=' ', newline='\n ', header=headerstr, footer='', comments='')
-        print "conf"
-        print self.conf
-        print "sliceconf"
-        print self.sliceconf       
         
         return {"array":data.transpose().tolist(),
                     "columnLabels":collabels,

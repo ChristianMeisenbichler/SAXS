@@ -235,7 +235,8 @@ class Server():
         print  self.serverdir
         dir=  os.path.join( self.serverdir, os.sep.join(request["argument"]['directory']))
         try:
-            files=os.listdir(os.path.join( dir))
+            files=os.listdir(os.path.join(dir))
+            print files
         except OSError as e:
             return {"result":"OSError","data":{"Error":str(e)}}
         content=[]

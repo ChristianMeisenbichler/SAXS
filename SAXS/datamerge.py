@@ -14,7 +14,9 @@ import re
 from jsonschema import validate,ValidationError
 import os
 import StringIO
-from msilib import Directory
+#msilib import seems to cause an error on the cc01-cluster
+#commented out by MB on Sept. 30th 15
+#from msilib import Directory
 
 def readtiff(imagepath):
     '''
@@ -201,13 +203,15 @@ def readallimages(dir):
               
             elif  name.endswith('log'):
                 logpath=os.path.join(path, name)
-                
                 imglogframe=imglogframe.append(readimglog(logpath))
             elif name.endswith("chi") or name.endswith("json") :
                 chilist.append(os.path.join(path, name))
     
     imgframe.columns+=" (Img)"
     imglogframe.columns+=" (ImgLog)"
+    
+    print imgframe.columns
+    print imglogframe.columns
 
     if True:
         imgframe["File Name (Img)"]=(imgframe["Image_path (Img)"]+imgframe['filename (Img)'])
@@ -480,7 +484,7 @@ def mergeimgdata(dir,tablea,imd,peakframe,firstImage=None):
     else:
         delta=timedelta(seconds=0)
     
-    basename= "D:/Data/150610_Burian/results/test_merge_final/bn_"
+    #basename= os.path.normpath(os.sep.join([os.path.normpath(directory),conf["OutputFileBaseName"]]))
     #imd.to_csv(basename+"imd.csv") 
     mergedt=imd.join(tablea,how="outer")
     #mergedt.to_csv(basename+"mergedt_join.csv")
@@ -506,20 +510,20 @@ def mergeimgdata(dir,tablea,imd,peakframe,firstImage=None):
             int = np.trapz(mergedt['Shutter      (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
                   x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
             mergedt['Shutter      (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Sam Temp     (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
+            int = np.trapz(mergedt['Current      (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
                   x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Sam Temp     (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Temp Thermo  (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
+            mergedt['Current      (Dlogger)'][mergedt_pos]=int/time_sum
+            int = np.trapz(mergedt['Pot          (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
                   x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Temp Thermo  (Dlogger)'][mergedt_pos]=int/time_sum
+            mergedt['Pot          (Dlogger)'][mergedt_pos]=int/time_sum
             int = np.trapz(mergedt['Diode        (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
                   x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
             mergedt['Diode        (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Cur_Pot1     (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-                  x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Cur_Pot1     (Dlogger)'][mergedt_pos]=int/time_sum
+            #int = np.trapz(mergedt['Cur_Pot1     (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
+            #      x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
+            #mergedt['Cur_Pot1     (Dlogger)'][mergedt_pos]=int/time_sum
 
-    mergedt.to_csv(basename+"mergedt_join_manint.csv")
+    #mergedt.to_csv(basename+"mergedt_join_manint.csv")
     mergedt=mergedt[mergedt.index.isin(imd.index)]
     #smergedt.to_csv(basename+"mergedt_join_int_isin.csv")
     
