@@ -2,7 +2,7 @@
 from PyQt4 import  QtGui
 from PyQt4 import  QtCore
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
+#from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 import json
 import matplotlib.pyplot as plt
 import prettyplotlib as ppl
@@ -53,7 +53,10 @@ class plotpanel(QtGui.QWidget):
                 y=np.array(set["array"][1])[:]
                 e=np.array(set["array"][2])[:]
                 ppl.plot(ax,x,y,lw=1.0)
-                ppl.fill_between(ax,x,y-e,y+e)
+                try:
+                    ppl.fill_between(ax,x,y-e,y+e)
+                except AttributeError:
+                    pass
                 plt.subplots_adjust(bottom=0.2)
                 self.canvases[maskindex].draw()
                 

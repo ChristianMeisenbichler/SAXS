@@ -4,9 +4,10 @@ import json,os,collections
 import jsonschematreemodel
 import calibeditdelegate
 import schematools
+from jsonschema import validate,ValidationError
 import Leash
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 
 import matplotlib.pyplot as plt
 import prettyplotlib as ppl
@@ -18,7 +19,7 @@ class consolidatepanel(QtGui.QWidget):
         self.setLayout(self.hlayout)
         self.treeview=QtGui.QTreeView()
         self.hlayout.addWidget(self.treeview)
-        
+
         self.model=jsonschematreemodel.jsonschematreemodel( app,
                         schema=json.load(open(os.path.dirname(__file__)
                         +os.sep+'DataConsolidationConf.json'),
@@ -30,7 +31,7 @@ class consolidatepanel(QtGui.QWidget):
         self.treeview.setAlternatingRowColors(True)
         self.treeview.setItemDelegateForColumn(1,calibeditdelegate.calibEditDelegate( app ))
         self.reset()
-        default= schematools.schematodefault( self.model.schema)
+        default= schematools.schematodefault(self.model.schema)
         
         
         self.filename=os.path.expanduser("~"
@@ -41,6 +42,15 @@ class consolidatepanel(QtGui.QWidget):
         if not os.path.isfile(self.filename):
             import shutil
             shutil.copy(os.path.dirname(__file__)   +os.sep+'consolconftemplate.json',self.filename)
+        
+        try:
+            self.calib=json.load(open(self.filename),object_pairs_hook=collections.OrderedDict)
+            validate(self.calib,self.model.schema)
+        except Exception as e:
+            print e
+            import shutil
+            shutil.copy(os.path.dirname(__file__)   +os.sep+'consolconftemplate.json',self.filename)
+         
         self.model.loadfile(self.filename)
         self.reset()
         self.connect(self.model, QtCore.SIGNAL('dataChanged(QModelIndex,QModelIndex)'),self.model.save)
@@ -57,19 +67,26 @@ class consolidatepanel(QtGui.QWidget):
         self.treeview.setColumnWidth(1,320)
         self.treeview.expandAll()
     def startmerge(self):
-        argu=["mergedata",self.filename]
-        result=json.loads(Leash.initcommand(self.app.options,argu,self.app.netconf))
-        if result['result']=="Error" or result['result']=="ServerError":
-            errormessage=QtGui.QErrorMessage(parent=self.app)
-            errormessage.setWindowTitle("Server Error")
-            errormessage.setMinimumSize(400, 300)
-            errormessage.showMessage(result['data']["Error"])
-            
+        mergeok = self.checkinput()
+        if mergeok == "OK":
+            argu=["mergedata",self.filename]
+            result=json.loads(Leash.initcommand(self.app.options,argu,self.app.netconf))
+            if result['result']=="Error" or result['result']=="ServerError":
+                errormessage=QtGui.QErrorMessage(parent=self.app)
+                errormessage.setWindowTitle("Server Error")
+                errormessage.setMinimumSize(400, 300)
+                errormessage.showMessage(result['data']["Error"])
+            else:
+                message=QtGui.QMessageBox(parent=self.app)
+                message.setWindowTitle("Merge Started")
+                message.setText("Data merge has been initiated.");
+                message.exec_();
         else:
-            message=QtGui.QMessageBox(parent=self.app)
-            message.setWindowTitle("Merge Started")
-            message.setText("Data merge has been initiated.");
-            message.exec_();
+            errormessage=QtGui.QErrorMessage(parent=self.app)
+            errormessage.setWindowTitle("Configuration Error")
+            errormessage.setMinimumSize(400, 300)
+            errormessage.showMessage(mergeok)
+            
     def showmergeresults(self,qstringdata):
         result=json.loads(unicode(qstringdata))
         import pandas as pd
@@ -94,4 +111,18 @@ class consolidatepanel(QtGui.QWidget):
                                    +result["data"]["syncplot"]['CalculatedTimeshift'])
             vlayout.addWidget(timelabel)
         dialog.exec_()
-            
+    
+    def checkinput(self):
+        mergeok = "OK"
+        cal=json.load(open(self.filename,"r"))
+        for table in cal["LogDataTables"]:
+            if table["FirstImageCorrelation"]==True and table["Name"]!="Peak":
+                mergeok = "Image correlation only makes sense with Peak-Integ file."
+                break
+            if table["ZeroImageCorrelation"]==True and table["Name"]!="Peak":
+                mergeok = "Zero correlation only makes sense with Peak-Integ file."
+                break
+            if table["FirstImageCorrelation"]==True and table["ZeroImageCorrelation"]==True :
+                mergeok = "Zero.tif and First-Image correlation is not possible. Choose one of them."
+                break
+        return mergeok

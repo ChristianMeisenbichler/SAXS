@@ -4,8 +4,10 @@ from PyQt4 import  QtCore
 import json,os
 import jsonschematreemodel as im
 from Leash import  initcommand
+import ctypes
 import maskfileui
 from PyQt4.QtGui import QComboBox
+from PyQt4.Qt import QMessageBox
 class calibEditDelegate(QtGui.QItemDelegate):
     def __init__(self,app,  parent=None):
         super(calibEditDelegate, self).__init__(parent)
@@ -170,6 +172,7 @@ class calibEditDelegate(QtGui.QItemDelegate):
                                       role=QtCore.Qt.DecorationRole)
                     except Exception as e:
                         print e
+                        ctypes.windll.user32.MessageBoxA(0, "There seems to be a problem with the mask. Check Fit2D!", "Mask File:", 0x0|0x30)
                         #self.errormessage.
         else:
             QtGui.QItemDelegate.setModelData(self, editor, model, index)

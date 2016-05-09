@@ -17,6 +17,7 @@ import collections
 import consolidatepanel
 from multiprocessing import Process,Value
 from Server import saxsdogserver
+from PyQt4.Qt import QMessageBox
 class LeashUI(QtGui.QMainWindow):
     def __init__(self,app,parent=None):
         super(LeashUI,self).__init__(parent)
@@ -51,13 +52,10 @@ class LeashUI(QtGui.QMainWindow):
         if selected==-1:
             dirdialog=QtGui.QFileDialog()
             serverdir=dirdialog.getExistingDirectory(parent=self, caption="Choose the Image Data Directory")
-            print serverdir
             self.localserverstop=Value('i',0)
             self.localserver=Process(target=saxsdogserver,
                                      args=(self.confs[-1],"Local",self.localserverstop,unicode(serverdir)))
             self.localserver.start()
-            
-            print "Local Server"
         self.parscecommandline()
         self.loadui(reconnectresult)
         self.setLocale(QtCore.QLocale("C"))
@@ -131,20 +129,27 @@ class LeashUI(QtGui.QMainWindow):
         self.calibeditor.model.save()
         argu=["new", data]
         result={}
-        try:
-            result=json.loads(Leash.initcommand(self.options,argu,self.netconf))
-        except Exception as e:
-            self.errormessage.setWindowTitle("Server Error")
-            self.errormessage.setMinimumSize(400, 300)
-            self.errormessage.showMessage( str(e))
-        if 'result' in result and result['result']=="new queue":
-            print result
-            self.setqueuesynced()
-            self.plotthread.start()
+        title = str(data['Title'])
+        usrfolder = str(data['Directory'][0])
+        titlestr='The title and the selected user folder do NOT match. Are you sure you are user: ' + str(usrfolder) +' ?' 
+        if title.find(usrfolder)==-1:
+            res=QMessageBox.warning(self, self.tr("User folder"),self.tr(titlestr), QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         else:
-            self.errormessage.setWindowTitle("Server Error")
-            self.errormessage.setMinimumSize(400, 300)
-            self.errormessage.showMessage( result["data"]["Error"])
+            res = QMessageBox.Yes
+        if res==QMessageBox.Yes:
+            try:
+                result=json.loads(Leash.initcommand(self.options,argu,self.netconf))
+            except Exception as e:
+                self.errormessage.setWindowTitle("Server Error")
+                self.errormessage.setMinimumSize(400, 300)
+                self.errormessage.showMessage( str(e))
+            if 'result' in result and result['result']=="new queue":
+                self.setqueuesynced()
+                self.plotthread.start()
+            else:
+                self.errormessage.setWindowTitle("Server Error")
+                self.errormessage.setMinimumSize(400, 300)
+                self.errormessage.showMessage( result["data"]["Error"])
     def setqueuesynced(self):
         self.queuestatuslabel.setText("Queue started.")
         self.filestatuslabel.setText("Local calibration synced")

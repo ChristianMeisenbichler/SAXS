@@ -55,8 +55,8 @@
 					"units": "Pixel",
 					"default": 
 					[
-						800.00,
-						400.00
+						900.00,
+						300.00
 					],
 
 					"items": 
@@ -90,7 +90,7 @@
 					"required": true,
 					"default": 
 					[
-						100.0
+						172.0
 					],
 
 					"items": 
@@ -98,7 +98,7 @@
 						"type": "number",
 						"units": "Microns",
 						"required": true,
-						"default": 100.0,
+						"default": 172.0,
 						"labels": 
 						[
 							"y and x",
@@ -117,8 +117,8 @@
 					"required": true,
 					"default": 
 					[
-						1000,
-						900
+						1043,
+						981
 					],
 
 					"items": 
@@ -135,7 +135,16 @@
 				}
 			}
 		},
-
+		
+        "Wavelength": 
+        {
+            "description": "Refined wavelength.",
+            "units": "Angstrom",
+            "type": "number",
+            "required": true,
+            "default": 1.54000
+        },
+        
 		"Masks": 
 		{
 			"type": "array",
@@ -202,7 +211,7 @@
 				}
 			}
 		},
-
+        
 		"Slices": 
 		{
 			"type": "array",
@@ -277,16 +286,15 @@
 				}
 			}
 		},
-
-		"Wavelength": 
-		{
-			"description": "Refined wavelength.",
-			"units": "Angstrom",
-			"type": "number",
-			"required": true,
-			"default": 1.54000
-		},
-
+		
+        "GISAXSmode": 
+        {
+            "description": "Run integration in GI-SAXS mode (no radial integration - only slcies?).",
+            "type": "boolean",
+            "required": false,
+            "default": false
+        },
+        
 		"PolarizationCorrection": 
 		{
 			"description": "The scattering direction id dependend on the light polarization. This may be acconted for with the polarization correction.",

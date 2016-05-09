@@ -186,7 +186,6 @@ def sendnew(options,arg,socket,conf):
     messageparts=(json.dumps(addauthentication(request,conf)),)
     for mask in cal["Masks"]:
         maskfile=mask["MaskFile"]
-        print "##leash"+maskfile
         messageparts+=(json.dumps(
                                   {"filename":maskfile,
                                    "data":base64.b64encode(open(maskfile,"rb").read())

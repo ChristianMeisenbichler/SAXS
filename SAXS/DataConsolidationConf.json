@@ -51,6 +51,14 @@
 						"type": "boolean",
 						"default": false
 					},
+					
+					"ZeroImageCorrelation": 
+                    {
+                        "required": true,
+                        "description": "Find offset for all log data by correlating zero.tif with first entry of this table. ",
+                        "type": "boolean",
+                        "default": false
+                    },
 
 					"Name": 
 					{

@@ -81,7 +81,7 @@ def imgtohdf(conf,imgdirectory,outputdirecory):
     filename=os.path.normpath(os.sep.join([os.path.normpath(outputdirecory),
                                        conf["OutputFileBaseName"]]))+".hdf"
     h5file = tb.open_file(filename, mode = "a", title = "Test file")
-    print "open: "+filename
+    #print "open: "+filename
     try:
         group=h5file.get_node("/", "Images")
     except tb.exceptions.NoSuchNodeError:
@@ -109,7 +109,7 @@ def graphstohdf(conf,fileslist,outputdirecory):
     filename=os.path.normpath(os.sep.join([os.path.normpath(outputdirecory),
                                        conf["OutputFileBaseName"]]))+".hdf"
     h5file = tb.open_file(filename, mode = "a", title = "Test file")
-    print "open: "+filename
+    #print "open: "+filename
     try:
         group=h5file.get_node("/", "Graphs")
     except tb.exceptions.NoSuchNodeError:
@@ -187,18 +187,14 @@ def readallimages(dir):
         for name in files:
             if name.endswith('tif'):
                 imgpath=os.path.join(path, name)
-                print imgpath
+                #print imgpath
                 row=readtiff(imgpath)
                 row['filepath']=imgpath
                 row['id']="h"+hashlib.sha224(imgpath).hexdigest()
                 rowframe=pd.DataFrame()
-             
                 rowframe=rowframe.append(row,ignore_index=True)
                 rowframe["date"]=pd.to_datetime(rowframe['date'])
                 rowframe=rowframe.set_index(["date"])
-                
-                
-                    
                 imgframe=imgframe.append(rowframe)
               
             elif  name.endswith('log'):
@@ -210,19 +206,19 @@ def readallimages(dir):
     imgframe.columns+=" (Img)"
     imglogframe.columns+=" (ImgLog)"
     
-    print imgframe.columns
-    print imglogframe.columns
+    #print imgframe.columns
+    #print imglogframe
 
-    if True:
-        imgframe["File Name (Img)"]=(imgframe["Image_path (Img)"]+imgframe['filename (Img)'])
-        merged=pd.merge(imglogframe,imgframe, 
-                        left_on="File Name (ImgLog)",
-                        right_on= "File Name (Img)")
-        merged=merged.set_index("End Date Time (ImgLog)")
-    if False:
-        merged=imgframe
+    #if True:
+    imgframe["File Name (Img)"]=(imgframe["Image_path (Img)"]+imgframe['filename (Img)'])
+    merged=pd.merge(imglogframe,imgframe, 
+                    left_on="File Name (ImgLog)",
+                    right_on= "File Name (Img)")
+    merged=merged.set_index("End Date Time (ImgLog)")
+    #if False:
+    #    merged=imgframe
         
-    print merged.columns.values
+    #print merged.columns.values
     return merged,chilisttodict(chilist)
   
 def compileconffromoptions(options, args):
@@ -238,6 +234,7 @@ def compileconffromoptions(options, args):
          "TimeOffset": 0.0, 
          "TimeEpoch":"Mac",
          "FirstImageCorrelation": options.syncfirst, 
+         "ZeroImageCorrelation": options.synczero, 
          "Name": "Peak", 
          "Files": [
            {
@@ -300,6 +297,9 @@ def merge():
     parser.add_option("-1", "--syncfirst", dest="syncfirst",
                       help="Sync time by taking the time difference between first shutter action and first image.", 
                       action="store_true",default=False)
+    parser.add_option("-z", "--synczero", dest="synczero",
+                      help="Sync time by taking the time difference between first shutter action and the zero.tif image.", 
+                      action="store_true",default=False)
     parser.add_option("-o", "--outfile", dest="outfile",
                       help="Write merged dataset to this file. Format is derived from the extesion.(.csv|.json|.hdf)", metavar="FILE",default="")
     parser.add_option("-b", "--batch", dest="batch",
@@ -338,6 +338,10 @@ def merge():
     
 def writeTable(conf,mergedTable,directory="."):
     basename=os.path.normpath(os.sep.join([os.path.normpath(directory),conf["OutputFileBaseName"]]))
+    mergedTableTS=mergedTable
+    mergedTableTS.index = (mergedTableTS.index-np.datetime64('1904-01-01T00:00:00Z')) / np.timedelta64(1, 's')
+    mergedTable.to_csv(basename+"_igor.csv")
+    
     for format in conf["OutputFormats"]:
         if conf["OutputFormats"][format]:
            
@@ -425,6 +429,7 @@ def mergelogs(conf,attachment=None,directory="."):
     tablea=None
     tableb=None
     firstImage=None
+    zeroCorr = None
     for tnumber,logTable in enumerate(conf["LogDataTables"]):
         
         for filenum ,logfile in enumerate(logTable["Files"]):
@@ -441,13 +446,15 @@ def mergelogs(conf,attachment=None,directory="."):
             else:
                 logframe=logframe.append(tmplog).sort_index()
         cleanuplog(logframe,logTable)
-        print conf["TimeOffset"]
+        print "TimeOffset: ", conf["TimeOffset"]
         basename=os.path.normpath(os.sep.join([os.path.normpath(directory), logTable["Name"]]))
-        print (basename+".csv")
+        print "(basename+.csv): ", (basename+".csv")
         logframe.to_csv(basename+".csv")
    
-        print timedelta(seconds=conf["TimeOffset"])
+        print "timedelta: ", timedelta(seconds=conf["TimeOffset"])
         logframe.index=logframe.index-timedelta(seconds=conf["TimeOffset"])
+        if logTable["ZeroImageCorrelation"]:
+            zeroCorr=True
         if logTable["FirstImageCorrelation"]:
             firstImage=logframe.index.min()
             peakframe=logframe
@@ -461,21 +468,25 @@ def mergelogs(conf,attachment=None,directory="."):
         else:
             tablea=logframe
             
-    return tablea,firstImage,peakframe
+    return tablea,firstImage,zeroCorr,peakframe,basename
 
 def mergedata(conf,dir,attachment=None):
     print "mergedata"
-    logsTable,firstImage,peakframe=mergelogs(conf,attachment=attachment)
+    logsTable,firstImage,zeroCorr,peakframe,logbasename=mergelogs(conf,attachment=attachment)
     imd,chi=readallimages(dir)
-    mergedt= mergeimgdata(dir,logsTable,imd,peakframe,firstImage=firstImage)
+    mergedt= mergeimgdata(logbasename,dir,logsTable,imd,peakframe,firstImage=firstImage,zeroCorr=zeroCorr)
     syncplotdata=syncplot(peakframe,imd)
     return mergedt,chi,syncplotdata
 
-def mergeimgdata(dir,tablea,imd,peakframe,firstImage=None):
+def mergeimgdata(logbasename,dir,tablea,imd,peakframe,firstImage=None,zeroCorr=None):
+    '''
+    ZeroImage correlation looks for two consecutive Files with ExpT = 2.345 and ExpP 4.567    
+    '''
     index=[]
     for pos in range(imd.index.shape[0]):    
             index.append(imd.index[pos]-timedelta(seconds=(imd['Exposure_time [s] (Img)'][pos])))
     imd.index=index  
+    '''If firstimagecorrelation is selected:'''
     if firstImage:
         delta=(imd.index.min()-firstImage)
         tablea.index=tablea.index+delta
@@ -483,17 +494,34 @@ def mergeimgdata(dir,tablea,imd,peakframe,firstImage=None):
         print "Time shift:" +str(delta)
     else:
         delta=timedelta(seconds=0)
+        
+    '''If ZeroImageCorrelation is selected:'''
+    if zeroCorr:
+        time_zeroframe = imd[imd.apply(lambda x: "zero_1M_00000.tif" in x['File Name (ImgLog)'], axis=1)].index[0]
+        firstImage = peakframe.index.min()
+        delta = time_zeroframe - firstImage
+        print "delta", delta
+        tablea.index=tablea.index+delta
+        peakframe.index=peakframe.index+delta
+        print "Time shift:" +str(delta)
+
     
-    #basename= os.path.normpath(os.sep.join([os.path.normpath(directory),conf["OutputFileBaseName"]]))
-    #imd.to_csv(basename+"imd.csv") 
-    mergedt=imd.join(tablea,how="outer")
+    basename=logbasename
+    #imd.to_csv(basename+"_imd.csv") 
+    #mergedt=imd.join(tablea,how="outer")
     #mergedt.to_csv(basename+"mergedt_join.csv")
     
     
     
     
     mergedt=imd.join(tablea,how="outer").interpolate(method="time")
-    #mergedt.to_csv(basename+"mergedt_join_int.csv")
+    mergedt.to_csv(basename+"_mergedt_join_int.csv")
+    
+    column_startave = mergedt.columns.get_loc('Ioni         (Dlogger)')
+    column_stopave = len(mergedt.columns)
+    mergedt['time_ave']=np.NaN
+    mergedt['transm (Peak)']=np.NaN
+    mergedt['transm (DLogger)']=np.NaN
     
     for pos in range(0, imd.index.shape[0]):
         mergedt_pos = mergedt.index.get_loc(imd.index[pos])
@@ -504,25 +532,13 @@ def mergeimgdata(dir,tablea,imd,peakframe,firstImage=None):
             mergedt_pos_t_stop = mergedt.index.searchsorted(mergedt.index[mergedt_pos] + timedelta(seconds=exp_time))
             time_sum = np.array(mergedt.index[mergedt_pos_t_stop], dtype='datetime64[ns]') -\
                        np.array(mergedt.index[mergedt_pos_t_start], dtype='datetime64[ns]')
-            int = np.trapz(mergedt['Ioni         (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-                  x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Ioni         (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Shutter      (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-                  x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Shutter      (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Current      (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-                  x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Current      (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Pot          (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-                  x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Pot          (Dlogger)'][mergedt_pos]=int/time_sum
-            int = np.trapz(mergedt['Diode        (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-                  x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            mergedt['Diode        (Dlogger)'][mergedt_pos]=int/time_sum
-            #int = np.trapz(mergedt['Cur_Pot1     (Dlogger)'][mergedt_pos_t_start:mergedt_pos_t_stop].values,\
-            #      x=mergedt.index[mergedt_pos_t_start:mergedt_pos_t_stop].values)           
-            #mergedt['Cur_Pot1     (Dlogger)'][mergedt_pos]=int/time_sum
+            time_sum_s = time_sum/ np.timedelta64(1, 's')
+            mergedt['time_ave'][mergedt_pos]=time_sum_s
+            for i in range (column_startave,column_stopave):
+                mergedt[[i]][mergedt_pos]=np.sum(mergedt[[i]][mergedt_pos_t_start:mergedt_pos_t_stop].values)/time_sum_s
 
+        mergedt['transm (Peak)'][mergedt_pos]=np.abs(mergedt['Diode_avg (Peak)'][mergedt_pos]/mergedt['Ioni_avg (Peak)'][mergedt_pos])
+        mergedt['transm (DLogger)'][mergedt_pos]=np.abs(mergedt['Diode        (Dlogger)'][mergedt_pos]/mergedt['Ioni         (Dlogger)'][mergedt_pos])
     #mergedt.to_csv(basename+"mergedt_join_manint.csv")
     mergedt=mergedt[mergedt.index.isin(imd.index)]
     #smergedt.to_csv(basename+"mergedt_join_int_isin.csv")

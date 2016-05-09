@@ -139,13 +139,15 @@ class imagequeue:
             if "date" in imgMetaData:
                 imgTime=imgMetaData["date"]
             else:
-                imgTime=""            
-            for calnum,cal in enumerate(self.cals):   
+                imgTime="" 
+            for calnum,cal in enumerate(self.cals):
                 if len(list(enumerate(self.cals)))==1:
                     filename=basename
                 else:
                     filename=basename+"_c"+cal.kind[0]+str(calnum)
                 chifilename=filename+".chi"
+                if self.options.GISAXSmode == True and calnum==0: #pass on GISAXSmode information to calibration.integratechi
+                    chifilename="xxx"
                 filelist[cal.kind+str(calnum)]=chifilename
                 if not self.options.resume or not os.path.isfile(chifilename):
                     result=cal.integratechi(image,chifilename,picture)
@@ -160,8 +162,7 @@ class imagequeue:
                         plt.draw()
                        
                              
-                if self.options.writesvg: 
-                    
+                if self.options.writesvg:     
                     if not self.options.resume or not os.path.isfile(filename+'.svg'):
                          cal.plot(image,filename+".svg",fig=self.fig)
                 if self.options.writepng:
@@ -186,6 +187,13 @@ class imagequeue:
             except Full:
                 print "Full"
             return basename ,data
+        
+    def clearqueue(self):
+        while self.histqueue.empty()==False:
+                self.histqueue.get()
+        print "History Queue cleared"
+
+        
     def start(self):  
         """
         Start threads and directory observer.

@@ -63,7 +63,7 @@ class calibration:
         """
         complexp=self.__complexCoordinatesOfPicture(1)
         pixelsize=self.config["Geometry"]['PixelSizeMicroM'][0]*1e-3 #
-        r=np.absolute(complexp)*pixelsize
+        r=(np.absolute(complexp))*pixelsize
         phi=np.angle(complexp)
         
         d=self.config["Geometry"]['DedectorDistanceMM']
@@ -119,7 +119,7 @@ class calibration:
         self.ITransposed =self.A
         self.I,self.Areas,self.oneoverA=rescaleI(self.A,self.corr)
         
-        self.qgrid=(np.arange(self.maxlabel+1)+0)/self.scale   
+        self.qgrid=(np.arange(self.maxlabel+1)+0.5)/self.scale   
        
         
       
@@ -153,11 +153,12 @@ class calibration:
                     "Error Margin"]
         integparam={"I0":I0, "I1":I1, "I2":I2}
         headerstr= json.dumps(self.config)+"\n"
-        headerstr+=json.dumps(collabels)+"\n"
         headerstr+=json.dumps(integparam)+"\n"
+        headerstr+=json.dumps(collabels)+"\n"
         headerstr+="   "+str(data.shape[0])+""
         
-        np.savetxt(path, data, fmt='%.18e', delimiter=' ', newline='\n ', header=headerstr, footer='', comments='')
+        if path != "xxx":#if working in GISAXSmode, the data is not saved
+            np.savetxt(path, data, fmt='%.18e', delimiter=' ', newline='\n ', header=headerstr, footer='', comments='')
         
        
         return {"array":data.transpose().tolist(),
@@ -235,10 +236,12 @@ class calibration:
         self.qgrid #numpy array
         qStop = self.maskconfig["qStop"]
         qStart = self.maskconfig["qStart"]
-        if np.max(self.qgrid[0])<qStop:
-            qStop=np.max(self.qgrid[0])
-        qStopIndex = np.where(self.qgrid > qStop)[0][0]
-        qStartIndex = np.where(self.qgrid > qStart)[0][0]
+        if np.max(self.qgrid)<qStop:
+            qStop=np.max(self.qgrid)
+        qStopIndex = np.where(self.qgrid >= qStop)[0][0]
+        if qStopIndex>np.size(Intensity):
+            qStopIndex=np.size(Intensity)
+        qStartIndex = np.where(self.qgrid >= qStart)[0][0]
         qDelta = self.qgrid[1]-self.qgrid[0]
         I0 = np.nansum(Intensity[qStartIndex:qStopIndex]) * qDelta
         I1 = np.nansum((Intensity[qStartIndex:qStopIndex] * self.qgrid[qStartIndex:qStopIndex])) * qDelta
@@ -265,22 +268,24 @@ def cplwcener(imagesize,beamcenter,oversampling):
                                              1./oversampling,
                                              dtype=np.float_)
                                    -imagesize[0]
-                                   +beamcenter[0]),
+                                   +beamcenter[0]+0.5/oversampling),
                         (np.arange(0,
                                              imagesize[1],
                                              1./oversampling,
                                              dtype=np.float_)
-                                   - beamcenter[1])
+                                   - beamcenter[1]+0.5/oversampling)
                          )
 
 def labelstosparse(labels,mask,oversampling):
-        ind=np.argsort(labels.flatten()).astype(int)
-        sortedl=labels.flatten()[ind]
-        newcol=sortedl-np.roll(sortedl,1)
+        '''labels: numerates pixels of same radial distance'''
+        ind=np.argsort(labels.flatten()).astype(int) #sorted indices to labeled pixels as array
+        sortedl=labels.flatten()[ind] #labels as array sorted by indices
+        '''at this point ind gives pixel number, sortedl the label for which integration ring the pixel is counted'''
+        newcol=sortedl-np.roll(sortedl,1)#0,1 matrix that is always zero and only one when the integration label is increased
         length=sortedl.shape[0]
-        coli=np.array(np.where(newcol>0)[0])
-        coliptr= np.concatenate(([0],coli,[length]))
-        m= sp.csc_matrix((np.ones(length),ind,coliptr))
+        coli=np.array(np.where(newcol>0)[0])#gives the position in sortedl where the ring is changed
+        coliptr= np.concatenate(([0],coli,[length]))#adds first and last point (0) and (length)
+        m= sp.csc_matrix((np.ones(length),ind,coliptr))#sparse matrix representation of labels
         sc=scalemat(mask.shape[0],mask.shape[1],oversampling)
         A=sp.csc_matrix((sc.dot(m)))
         return sp.csc_matrix((A.data*mask.flatten()[A.indices],A.indices,A.indptr))
@@ -354,7 +359,6 @@ def openmask(mfile,attachment=None):
     if mfile.endswith('.msk'):
         import bitarray
         maskb=bitarray.bitarray( endian='little')
-        
         maskb.frombytes(mfilestream) 
         maskl=np.array(maskb.tolist())
        
@@ -366,12 +370,15 @@ def openmask(mfile,attachment=None):
         word=32
         padding= word - y % word
         yb=y+padding
+        off=np.size(maskl)-yb*x
         off=8192
+
         mask=maskl[off:x*yb+off].reshape(x, yb)
         cropedmask=np.flipud(mask[0:x,0:y])
         # save the mask in order to controll if it worked
         #misc.imsave("mask.png",cropedmask)
-        return  np.logical_not(cropedmask)
+        return np.logical_not(cropedmask)
+
     else:
         if attachment:
             mask= np.where(misc.imread(mfilestream)!=0,False,True)

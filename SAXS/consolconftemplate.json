@@ -4,7 +4,8 @@
     {
       "TimeEpoch": "Mac", 
       "TimeOffset": 0.0, 
-      "FirstImageCorrelation": true, 
+      "FirstImageCorrelation": false, 
+      "ZeroImageCorrelation": true, 
       "Name": "Peak", 
       "Files": [
         {
@@ -23,6 +24,7 @@
       "TimeEpoch": "Mac", 
       "TimeOffset": 0.0, 
       "FirstImageCorrelation": false, 
+      "ZeroImageCorrelation": false, 
       "Name": "Dlogger", 
       "Files": [
         {
@@ -38,6 +40,7 @@
       ]
     }
   ], 
+
   "OutputFormats": {
     "csv": true, 
     "hdf": true, 
